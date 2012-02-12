@@ -72,7 +72,6 @@ publish
 [Bb]in
 [Oo]bj
 sql
-TestResults
 *.Cache
 ClientBin
 stylecop.*

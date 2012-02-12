@@ -92,22 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NuGet.exe" />
-    <Content Include="Reference\AspNetPager.dll" />
-    <Content Include="Reference\LinqKit.dll" />
-    <Content Include="Reference\Microsoft.Web.Mvc.dll" />
-    <Content Include="Reference\MVC3\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="Reference\MVC3\Microsoft.Web.Infrastructure.xml" />
-    <Content Include="Reference\MVC3\System.Web.Helpers.dll" />
-    <Content Include="Reference\MVC3\System.Web.Helpers.xml" />
-    <Content Include="Reference\MVC3\System.Web.Razor.dll" />
-    <Content Include="Reference\MVC3\System.Web.Razor.xml" />
-    <Content Include="Reference\MVC3\System.Web.WebPages.Administration.dll" />
-    <Content Include="Reference\MVC3\System.Web.WebPages.Deployment.dll" />
-    <Content Include="Reference\MVC3\System.Web.WebPages.Deployment.xml" />
-    <Content Include="Reference\MVC3\System.Web.WebPages.dll" />
-    <Content Include="Reference\MVC3\System.Web.WebPages.Razor.dll" />
-    <Content Include="Reference\MVC3\System.Web.WebPages.Razor.xml" />
-    <Content Include="Reference\MVC3\System.Web.WebPages.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
