@@ -7,10 +7,12 @@ properties.Add("Surname", typeof(string));
 #>
 
 using System;
+namespace CSharpcommon {
 public class <#="MyClass"#>{ 
 <# foreach(string name in properties.Keys) { #> 
     public <#=properties[name].Name#> <#=name#>{ 
         get; set; 
     } 
 <# } #> 
+}
 }

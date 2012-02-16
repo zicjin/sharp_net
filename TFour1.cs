@@ -1,6 +1,7 @@
 ﻿ 
 
 using System;
+namespace CSharpcommon {
 public class MyClass{ 
  
     public Int32 Age{ 
@@ -15,4 +16,5 @@ public class MyClass{
         get; set; 
     } 
  
+}
 }
