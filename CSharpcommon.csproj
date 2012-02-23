@@ -77,7 +77,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TFour.tt</DependentUpon>
     </Compile>
-    <Compile Include="UrlHelper.cs" />
+    <Compile Include="UrlBuild.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
