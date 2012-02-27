@@ -53,7 +53,7 @@ namespace CSharpcommon {
         public static string ImgUrl(string file) {
             return (HttpContext.Current.IsDebuggingEnabled && ByDebug ? ImgHead : ImgHeadOnline) + file;
         }
-        public static IHtmlString ImgDoc(this HtmlHelper helper, string file) {
+        public static IHtmlString ImgUrl(this HtmlHelper helper, string file) {
             return helper.Raw(ImgUrl(file));
         }
     }
