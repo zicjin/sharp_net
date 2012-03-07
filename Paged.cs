@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CSharpcommon {
     public class PagedResult<T> {
-        public IEnumerable<T> Result { get; set; }
+        public IQueryable<T> Result { get; set; }
         public int Count { get; set; }
     }
 }

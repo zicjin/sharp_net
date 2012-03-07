@@ -8,12 +8,12 @@ using System.IO;
 
 namespace CSharpcommon {
     public class UserFilter : ActionFilterAttribute {
-        public override void OnActionExecuted(ActionExecutedContext context) {
+        public override void OnActionExecuting(ActionExecutingContext context) {
             if (context.HttpContext.User.Identity.IsAuthenticated) {
                 UserIdentity userModel = context.HttpContext.User.GetIdentityUser();
                 context.Controller.ViewBag.UserModel = userModel;
             }
-            base.OnActionExecuted(context);
+            base.OnActionExecuting(context);
         }
     }
 

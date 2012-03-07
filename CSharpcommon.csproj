@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication.cs" />
+    <Compile Include="CompressResponseAttribute.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="EnumDescription.cs" />
     <Compile Include="EnumHelp.cs" />
