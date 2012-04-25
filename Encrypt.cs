@@ -4,7 +4,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public static class Encrypt {
 
         public static string EncryptUserPassword(string pToEncrypt) {

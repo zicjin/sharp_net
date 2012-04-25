@@ -84,35 +84,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication.cs" />
-    <Compile Include="CompressResponseAttribute.cs" />
+    <Compile Include="Domain\IDomainEvent.cs" />
+    <Compile Include="Domain\Repositories\IRepository.cs" />
+    <Compile Include="Domain\Repositories\IRepositoryContext.cs" />
+    <Compile Include="Domain\Repositories\Repository.cs" />
+    <Compile Include="Domain\Repositories\RepositoryContext.cs" />
+    <Compile Include="Domain\Repositories\RepositoryContextManager.cs" />
+    <Compile Include="Domain\Repositories\SortOrder.cs" />
+    <Compile Include="Domain\Specifications\AndNotSpecification.cs" />
+    <Compile Include="Domain\Specifications\AndSpecification.cs" />
+    <Compile Include="Domain\Specifications\AnySpecification.cs" />
+    <Compile Include="Domain\Specifications\CompositeSpecification.cs" />
+    <Compile Include="Domain\Specifications\ExpressionFuncExtender.cs" />
+    <Compile Include="Domain\Specifications\ExpressionSpecification.cs" />
+    <Compile Include="Domain\Specifications\ICompositeSpecification.cs" />
+    <Compile Include="Domain\Specifications\ISpecification.cs" />
+    <Compile Include="Domain\Specifications\ISpecificationParser.cs" />
+    <Compile Include="Domain\Specifications\NoneSpecification.cs" />
+    <Compile Include="Domain\Specifications\NotSpecification.cs" />
+    <Compile Include="Domain\Specifications\OrSpecification.cs" />
+    <Compile Include="Domain\Specifications\ParameterRebinder.cs" />
+    <Compile Include="Domain\Specifications\Specification.cs" />
+    <Compile Include="UserInterface\Web\Authentication.cs" />
+    <Compile Include="UserInterface\Web\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />
+    <Compile Include="Domain\DomainException.cs" />
+    <Compile Include="Domain\IAggregateRoot.cs" />
+    <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="EnumDescription.cs" />
     <Compile Include="EnumHelp.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="ExpendLinq.cs" />
-    <Compile Include="ExpendMvc.cs" />
+    <Compile Include="UserInterface\Web\ExpendMvc.cs" />
     <Compile Include="ExpendObj.cs" />
     <Compile Include="ExpendString.cs" />
-    <Compile Include="ExpendWinform.cs" />
-    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="UserInterface\Winform\ExpendWinform.cs" />
+    <Compile Include="Domain\IUnitOfWork.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Paged.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RestClient.cs" />
+    <Compile Include="Learn\RestClient.cs" />
     <Compile Include="ServiceLocator.cs" />
     <Compile Include="StringHelper.cs" />
-    <Compile Include="TFour1.cs">
+    <Compile Include="Learn\TFour1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TFour.tt</DependentUpon>
     </Compile>
-    <Compile Include="UrlBuild.cs" />
+    <Compile Include="UserInterface\Web\UrlBuild.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="TFour.tt">
+    <None Include="Learn\TFour.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TFour1.cs</LastGenOutput>
     </None>

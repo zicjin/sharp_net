@@ -6,7 +6,7 @@ using System.Reflection;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 
-namespace stackFluent.Infrastructure {
+namespace zic_dotnet {
     /// <summary>
     /// Represents the Service Locator.
     /// </summary>

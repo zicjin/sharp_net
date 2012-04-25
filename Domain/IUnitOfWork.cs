@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 
-namespace stackFluent.Data {
+namespace zic_dotnet.Domain {
     /// <summary>
     /// Represents the Unit Of Work.
     /// </summary>

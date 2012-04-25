@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace stackFluent.Data {
+namespace zic_dotnet {
     public class Disposable : IDisposable {
         private bool isDisposed;
 

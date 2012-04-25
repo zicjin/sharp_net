@@ -9,7 +9,7 @@ using System.Net;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public static class RestClient {
         //http://msdn.microsoft.com/zh-cn/library/system.net.webclient(v=VS.100).aspx
         public static WebClient client { get; set; }
