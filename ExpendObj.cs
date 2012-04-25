@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     static class ExpendObj {
         public static T ParseTo<T>(this object input) {
             object tmp = ChangeType(input, typeof(T));

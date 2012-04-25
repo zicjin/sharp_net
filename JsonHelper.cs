@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Json;
 using System.Text.RegularExpressions;
 using System.IO;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public class JsonHelper {
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿ 
 
 using System;
-namespace CSharpcommon {
+namespace zic_dotnet {
 public class MyClass{ 
  
     public Int32 Age{ 

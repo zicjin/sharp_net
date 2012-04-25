@@ -2,7 +2,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace ByteartRetail.Domain.Specifications
+namespace zic_dotnet.Domain.Specifications
 {
     /// <summary>
     /// Represents that the implemented classes are specifications. For more

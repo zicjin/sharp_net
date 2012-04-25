@@ -2,7 +2,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace ByteartRetail.Domain.Specifications
+namespace zic_dotnet.Domain.Specifications
 {
     /// <summary>
     /// Represents the specification which indicates the semantics opposite to the given specification.

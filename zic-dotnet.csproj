@@ -8,8 +8,8 @@
     <ProjectGuid>{3251CF20-191C-4F54-B070-9C342227E358}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpcommon</RootNamespace>
-    <AssemblyName>CSharpcommon</AssemblyName>
+    <RootNamespace>zic_dotnet</RootNamespace>
+    <AssemblyName>zic-dotnet</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -62,8 +66,10 @@
       <HintPath>packages\Mvc3Futures.3.0.20105.0\lib\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.ServiceModel" />
@@ -85,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\IDomainEvent.cs" />
+    <Compile Include="Domain\Repositories\EntityFramework\EntityFrameworkRepository.cs" />
+    <Compile Include="Domain\Repositories\EntityFramework\IEntityFrameworkRepositoryContext.cs" />
     <Compile Include="Domain\Repositories\IRepository.cs" />
     <Compile Include="Domain\Repositories\IRepositoryContext.cs" />
     <Compile Include="Domain\Repositories\Repository.cs" />
@@ -105,6 +113,7 @@
     <Compile Include="Domain\Specifications\OrSpecification.cs" />
     <Compile Include="Domain\Specifications\ParameterRebinder.cs" />
     <Compile Include="Domain\Specifications\Specification.cs" />
+    <Compile Include="FaultData.cs" />
     <Compile Include="UserInterface\Web\Authentication.cs" />
     <Compile Include="UserInterface\Web\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />
@@ -135,6 +144,7 @@
     <Compile Include="UserInterface\Web\UrlBuild.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Learn\TFour.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

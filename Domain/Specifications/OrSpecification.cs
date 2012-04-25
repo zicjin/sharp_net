@@ -2,7 +2,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace ByteartRetail.Domain.Specifications
+namespace zic_dotnet.Domain.Specifications
 {
     /// <summary>
     /// Represents the combined specification which indicates that either of the given

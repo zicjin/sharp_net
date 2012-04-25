@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO.Compression;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public class CompressResponseAttribute : ActionFilterAttribute {
         public override void OnActionExecuting(ActionExecutingContext filterContext) {
             HttpRequestBase request = filterContext.HttpContext.Request;

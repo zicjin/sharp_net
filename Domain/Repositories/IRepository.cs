@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using ByteartRetail.Domain.Specifications;
+using zic_dotnet.Domain.Specifications;
 using zic_dotnet.Domain;
 
 namespace zic_dotnet.Domain.Repositories

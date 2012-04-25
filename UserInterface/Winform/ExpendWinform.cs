@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.UI;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     static class ExpendWinform {
         //Usage
         //禁用所有Button：

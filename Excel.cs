@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.IO;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     /// <summary>
     /// 描述：對Excel文件的創建表、讀取、寫入數據操作.
     /// 程序員：谢堂文(Darren Xie)
