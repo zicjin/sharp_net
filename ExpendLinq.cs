@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public static class ExpendLinq {
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action) {

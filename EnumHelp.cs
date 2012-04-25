@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public static class Enumhelp {
         public static List<EnumItem> ListTypeForEnum(Type enumType) {
             List<EnumItem> list = new List<EnumItem>();

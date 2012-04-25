@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 using System.Web;
 using System.IO;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public static class StringHelper {
         public static string NoHtml(string htmlstring) {
             if (string.IsNullOrEmpty(htmlstring)) {

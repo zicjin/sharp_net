@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public static class ExpendString {
 
         public static int LengthCar(this string input) {

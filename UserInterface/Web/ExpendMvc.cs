@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using Microsoft.Web.Mvc;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public static class ExpendMvc {
 
         public static string ActionImageLink(this HtmlHelper helper, 

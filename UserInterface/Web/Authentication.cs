@@ -6,7 +6,7 @@ using System.Security.Principal;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     public class UserFilter : ActionFilterAttribute {
         public override void OnActionExecuting(ActionExecutingContext context) {
             if (context.HttpContext.User.Identity.IsAuthenticated) {

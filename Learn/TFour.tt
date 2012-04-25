@@ -7,7 +7,7 @@ properties.Add("Surname", typeof(string));
 #>
 
 using System;
-namespace CSharpcommon {
+namespace zic_dotnet {
 public class <#="MyClass"#>{ 
 <# foreach(string name in properties.Keys) { #> 
     public <#=properties[name].Name#> <#=name#>{ 

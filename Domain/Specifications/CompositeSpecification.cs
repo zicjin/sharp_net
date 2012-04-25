@@ -1,5 +1,5 @@
 ﻿
-namespace ByteartRetail.Domain.Specifications
+namespace zic_dotnet.Domain.Specifications
 {
     /// <summary>
     /// Represents the base class for composite specifications.

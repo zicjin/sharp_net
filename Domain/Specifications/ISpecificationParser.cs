@@ -1,5 +1,5 @@
 ﻿
-namespace ByteartRetail.Domain.Specifications
+namespace zic_dotnet.Domain.Specifications
 {
     /// <summary>
     /// Represents that the implemented classes are specification parsers that

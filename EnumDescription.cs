@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Collections;
 using System.Text;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
     /// <summary>
     /// 把枚举值按照指定的文本显示
     /// <remarks>

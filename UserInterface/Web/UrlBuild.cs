@@ -5,7 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CSharpcommon {
+namespace zic_dotnet {
 
     public static class UrlBuild {
         static UrlBuild() {
