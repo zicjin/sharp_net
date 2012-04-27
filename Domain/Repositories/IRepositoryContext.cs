@@ -10,30 +10,12 @@ namespace zic_dotnet.Domain.Repositories
     /// </summary>
     public interface IRepositoryContext : IUnitOfWork, IDisposable
     {
-        /// <summary>
-        /// Gets the unique-identifier of the repository context.
-        /// </summary>
         Guid ID { get; }
-        /// <summary>
-        /// Registers a new object to the repository context.
-        /// </summary>
-        /// <typeparam name="TAggregateRoot">The type of the aggregate root.</typeparam>
-        /// <param name="obj">The object to be registered.</param>
-        void RegisterNew<TAggregateRoot>(TAggregateRoot obj)
-            where TAggregateRoot : class, IAggregateRoot;
-        /// <summary>
-        /// Registers a modified object to the repository context.
-        /// </summary>
-        /// <typeparam name="TAggregateRoot">The type of the aggregate root.</typeparam>
-        /// <param name="obj">The object to be registered.</param>
-        void RegisterModified<TAggregateRoot>(TAggregateRoot obj)
-            where TAggregateRoot : class, IAggregateRoot;
-        /// <summary>
-        /// Registers a deleted object to the repository context.
-        /// </summary>
-        /// <typeparam name="TAggregateRoot">The type of the aggregate root.</typeparam>
-        /// <param name="obj">The object to be registered.</param>
-        void RegisterDeleted<TAggregateRoot>(TAggregateRoot obj)
-            where TAggregateRoot : class, IAggregateRoot;
+        
+        void RegisterNew<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot;
+        
+        void RegisterModified<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot;
+        
+        void RegisterDeleted<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot;
     }
 }
