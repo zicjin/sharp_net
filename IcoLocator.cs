@@ -10,20 +10,20 @@ namespace zic_dotnet {
     /// <summary>
     /// Represents the Service Locator.
     /// </summary>
-    public sealed class ServiceLocator : IServiceProvider {
+    public sealed class IcoLocator : IServiceProvider {
         #region Private Fields
         private readonly IUnityContainer container;
         #endregion
 
         #region Private Static Fields
-        private static readonly ServiceLocator instance = new ServiceLocator();
+        private static readonly IcoLocator instance = new IcoLocator();
         #endregion
 
         #region Ctors
         /// <summary>
         /// Initializes a new instance of <c>ServiceLocator</c> class.
         /// </summary>
-        private ServiceLocator() {
+        private IcoLocator() {
             UnityConfigurationSection section = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
             container = new UnityContainer();
             section.Configure(container);
@@ -34,7 +34,7 @@ namespace zic_dotnet {
         /// <summary>
         /// Gets the singleton instance of the <c>ServiceLocator</c> class.
         /// </summary>
-        public static ServiceLocator Instance {
+        public static IcoLocator Instance {
             get {
                 return instance;
             }

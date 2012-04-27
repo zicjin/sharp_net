@@ -34,6 +34,18 @@ namespace zic_dotnet.Domain.Repositories
         }
         #endregion
 
+        #region Public Methods
+        /// <summary>
+        /// Returns the instance of the repository for the specific type of aggregate root.
+        /// </summary>
+        /// <typeparam name="T">The type of the aggregate root.</typeparam>
+        /// <returns>The instance of the repository.</returns>
+        public IRepository<T> GetRepository<T>()
+            where T : class, IAggregateRoot {
+            return IcoLocator.Instance.GetService<IRepository<T>>(new { context = this });
+        }
+        #endregion
+
         #region Protected Properties
         /// <summary>
         /// Gets an enumerator which iterates over the collection that contains all the objects need to be added to the repository.
