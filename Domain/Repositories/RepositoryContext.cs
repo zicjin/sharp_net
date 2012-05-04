@@ -42,7 +42,7 @@ namespace zic_dotnet.Domain.Repositories
         /// <returns>The instance of the repository.</returns>
         public IRepository<T> GetRepository<T>()
             where T : class, IAggregateRoot {
-            return IcoLocator.Instance.GetService<IRepository<T>>(new { context = this });
+            return IocLocator.Instance.GetService<IRepository<T>>(new { context = this });
         }
         #endregion
 

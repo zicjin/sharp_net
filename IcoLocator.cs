@@ -14,8 +14,8 @@ namespace zic_dotnet {
         private readonly IUnityContainer container;
         private IcoLocator() {
             container = new UnityContainer();
-            //UnityConfigurationSection section = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
-            //section.Configure(container);
+            UnityConfigurationSection section = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
+            section.Configure(container);
         }
         private static readonly IcoLocator instance = new IcoLocator();
         public static IcoLocator Instance {

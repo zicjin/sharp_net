@@ -5,7 +5,7 @@ using System.Text;
 
 namespace zic_dotnet {
     public class PagedResult<T> {
-        public IList<T> Result { get; set; }
+        public IEnumerable<T> Result { get; set; }
         public int Count { get; set; }
     }
 }
