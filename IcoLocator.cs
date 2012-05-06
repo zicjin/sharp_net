@@ -10,15 +10,15 @@ namespace zic_dotnet {
     /// <summary>
     /// Represents the Service Locator.
     /// </summary>
-    public sealed class IcoLocator : IServiceProvider {
+    public sealed class IocLocator : IServiceProvider {
         private readonly IUnityContainer container;
-        private IcoLocator() {
+        private IocLocator() {
             container = new UnityContainer();
             UnityConfigurationSection section = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
             section.Configure(container);
         }
-        private static readonly IcoLocator instance = new IcoLocator();
-        public static IcoLocator Instance {
+        private static readonly IocLocator instance = new IocLocator();
+        public static IocLocator Instance {
             get {
                 return instance;
             }

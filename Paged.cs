@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace zic_dotnet {
-    public class PagedResult<T> {
+    public class Pager<T> {
         public IEnumerable<T> Result { get; set; }
         public int Count { get; set; }
     }
