@@ -2,28 +2,26 @@
 using System;
 using System.Linq.Expressions;
 
-namespace zic_dotnet.Domain.Specifications
+namespace zic_dotnet.Specifications
 {
     /// <summary>
-    /// Represents the specification which is represented by the corresponding
-    /// LINQ expression.
+    /// Represents the specification which indicates the semantics opposite to the given specification.
     /// </summary>
     /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
-    internal sealed class ExpressionSpecification<T> : Specification<T>
+    public class NotSpecification<T> : Specification<T>
     {
         #region Private Fields
-        private Expression<Func<T, bool>> expression;
+        private ISpecification<T> spec;
         #endregion
 
         #region Ctor
         /// <summary>
-        /// Initializes a new instance of <c>ExpressionSpecification&lt;T&gt;</c> class.
+        /// Initializes a new instance of <c>NotSpecification&lt;T&gt;</c> class.
         /// </summary>
-        /// <param name="expression">The LINQ expression which represents the current
-        /// specification.</param>
-        public ExpressionSpecification(Expression<Func<T, bool>> expression)
+        /// <param name="specification">The specification to be reversed.</param>
+        public NotSpecification(ISpecification<T> specification)
         {
-            this.expression = expression;
+            this.spec = specification;
         }
         #endregion
 
@@ -34,7 +32,8 @@ namespace zic_dotnet.Domain.Specifications
         /// <returns>The LINQ expression.</returns>
         public override Expression<Func<T, bool>> GetExpression()
         {
-            return this.expression;
+            var body = Expression.Not(this.spec.GetExpression().Body);
+            return Expression.Lambda<Func<T, bool>>(body, this.spec.GetExpression().Parameters);
         }
         #endregion
     }

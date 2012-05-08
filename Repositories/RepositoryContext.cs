@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using zic_dotnet;
+using zic_dotnet.Domain;
 
-namespace zic_dotnet.Domain.Repositories
+namespace zic_dotnet.Repositories
 {
     /// <summary>
     /// Represents the base class for repository contexts.
@@ -144,5 +145,16 @@ namespace zic_dotnet.Domain.Repositories
 
         #endregion
 
+        #region Public Methods
+        /// <summary>
+        /// Returns the instance of the repository for the specific type of aggregate root.
+        /// </summary>
+        /// <typeparam name="T">The type of the aggregate root.</typeparam>
+        /// <returns>The instance of the repository.</returns>
+        public IRepository<T> GetRepository<T>()
+            where T : class, IAggregateRoot {
+            return IocLocator.Instance.GetService<IRepository<T>>(new { context = this });
+        }
+        #endregion
     }
 }

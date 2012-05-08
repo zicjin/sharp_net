@@ -1,5 +1,5 @@
 ﻿
-namespace zic_dotnet.Domain.Repositories
+namespace zic_dotnet.Repositories
 {
     /// <summary>
     /// Represents the sorting style.

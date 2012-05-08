@@ -1,5 +1,5 @@
 ﻿
-namespace zic_dotnet.Domain.Specifications
+namespace zic_dotnet.Specifications
 {
     /// <summary>
     /// Represents that the implemented classes are composite specifications.
