@@ -119,5 +119,20 @@ namespace zic_dotnet {
             return helper.ActionLink(linkText, null, null, routeValues, htmlAttrs);
         }
 
+        public static MvcHtmlString ActionLinkWico<T>(this HtmlHelper helper, Expression<Action<T>> action, string linkText, string icoClass) 
+            where T : Controller {
+                return helper.ActionLink<T>(action, linkText, new { @class = "ico[" + icoClass + "]" });
+        }
+        public static MvcHtmlString ActionLinkWico<T>(this HtmlHelper helper, Expression<Action<T>> action, string linkText, string icoClass, object htmlAttributes) 
+            where T : Controller {
+            RouteValueDictionary routeValues = Microsoft.Web.Mvc.Internal.ExpressionHelper.GetRouteValuesFromExpression(action);
+            RouteValueDictionary htmlAttrs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+            if (htmlAttrs["class"] == null) {
+                htmlAttrs.Add("class", "ico[" + icoClass + "]");
+            } else {
+                htmlAttrs["class"] += "ico[" + icoClass + "]";
+            }
+            return helper.ActionLink(linkText, null, null, routeValues, htmlAttrs);
+        }
     }
 }
