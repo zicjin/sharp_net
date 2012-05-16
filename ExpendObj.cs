@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace zic_dotnet {
-    static class ExpendObj {
+
+    internal static class ExpendObj {
+
         public static T ParseTo<T>(this object input) {
             object tmp = ChangeType(input, typeof(T));
             if (tmp == null) return default(T);

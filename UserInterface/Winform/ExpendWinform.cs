@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web.UI;
 
 namespace zic_dotnet {
-    static class ExpendWinform {
+
+    internal static class ExpendWinform {
+
         //Usage
         //禁用所有Button：
         //this.GetControls<Button>(null).ForEach(b => b.Enabled = false);

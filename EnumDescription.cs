@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Reflection;
 using System.Collections;
-using System.Text;
+using System.Reflection;
 
 namespace zic_dotnet {
+
     /// <summary>
     /// 把枚举值按照指定的文本显示
     /// <remarks>
     /// EnumDescription.GetEnumText(typeof(MyEnum));
     /// EnumDescription.GetFieldText(MyEnum.Two);
-    /// EnumDescription.GetFieldTexts(typeof(MyEnum)); 
+    /// EnumDescription.GetFieldTexts(typeof(MyEnum));
     /// </example>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Enum)]
     public class EnumDescription : Attribute {
@@ -50,7 +50,7 @@ namespace zic_dotnet {
             get { return fieldIno.Name; }
         }
 
-        #region  对枚举描述属性的解释相关函数
+        #region 对枚举描述属性的解释相关函数
 
         /// <summary>
         /// 排序类型
@@ -71,7 +71,6 @@ namespace zic_dotnet {
         }
 
         private static System.Collections.Hashtable cachedEnum = new Hashtable();
-
 
         /// <summary>
         /// 得到对枚举的描述文本
@@ -96,7 +95,6 @@ namespace zic_dotnet {
             }
             return string.Empty;
         }
-
 
         /// <summary>
         /// 得到枚举类型定义的所有文本，按定义的顺序返回
@@ -164,6 +162,6 @@ namespace zic_dotnet {
             return descriptions;
         }
 
-        #endregion
+        #endregion 对枚举描述属性的解释相关函数
     }
 }

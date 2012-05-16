@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace zic_dotnet {
+
     public class Pager<T> {
+
         public IEnumerable<T> Result { get; set; }
+
         public int Count { get; set; }
     }
 }

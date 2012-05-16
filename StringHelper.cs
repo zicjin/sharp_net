@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Runtime.Serialization.Json;
-using System.Runtime.Serialization;
 using System.Web;
-using System.IO;
 
 namespace zic_dotnet {
+
     public static class StringHelper {
+
         public static string NoHtml(string htmlstring) {
             if (string.IsNullOrEmpty(htmlstring)) {
                 return string.Empty;

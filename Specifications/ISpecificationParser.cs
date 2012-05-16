@@ -1,14 +1,13 @@
-﻿
-namespace zic_dotnet.Specifications
-{
+﻿namespace zic_dotnet.Specifications {
+
     /// <summary>
     /// Represents that the implemented classes are specification parsers that
-    /// parses the given specification to a domain specific criteria object, such 
+    /// parses the given specification to a domain specific criteria object, such
     /// as the <c>ICriteria</c> instance in NHibernate.
     /// </summary>
     /// <typeparam name="TCriteria">The type of the domain specific criteria.</typeparam>
-    public interface ISpecificationParser<TCriteria>
-    {
+    public interface ISpecificationParser<TCriteria> {
+
         /// <summary>
         /// Parses the given specification to a domain specific criteria object.
         /// </summary>

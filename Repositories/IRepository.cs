@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using zic_dotnet.Specifications;
 using zic_dotnet.Domain;
+using zic_dotnet.Specifications;
 
 namespace zic_dotnet.Repositories {
+
     public interface IRepository<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot {
 
         IRepositoryContext Context { get; }

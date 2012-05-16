@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace zic_dotnet.Specifications
-{
+namespace zic_dotnet.Specifications {
+
     /// <summary>
     /// Represents the parameter rebinder used for rebinding the parameters
     /// for the given expressions. This is part of the solution which solves
@@ -13,36 +10,39 @@ namespace zic_dotnet.Specifications
     /// Apworks specifications. For more information about this solution please
     /// refer to http://blogs.msdn.com/b/meek/archive/2008/05/02/linq-to-entities-combining-predicates.aspx.
     /// </summary>
-    internal class ParameterRebinder : ExpressionVisitor
-    {
+    internal class ParameterRebinder : ExpressionVisitor {
         #region Private Fields
+
         private readonly Dictionary<ParameterExpression, ParameterExpression> map;
-        #endregion
+
+        #endregion Private Fields
 
         #region Ctor
-        internal ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map)
-        {
+
+        internal ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map) {
             this.map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
         }
-        #endregion
+
+        #endregion Ctor
 
         #region Internal Static Methods
-        internal static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
-        {
+
+        internal static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp) {
             return new ParameterRebinder(map).Visit(exp);
         }
-        #endregion
+
+        #endregion Internal Static Methods
 
         #region Protected Methods
-        protected override Expression VisitParameter(ParameterExpression p)
-        {
+
+        protected override Expression VisitParameter(ParameterExpression p) {
             ParameterExpression replacement;
-            if (map.TryGetValue(p, out replacement))
-            {
+            if (map.TryGetValue(p, out replacement)) {
                 p = replacement;
             }
             return base.VisitParameter(p);
         }
-        #endregion
+
+        #endregion Protected Methods
     }
 }

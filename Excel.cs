@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
+using System.Text;
 
 namespace zic_dotnet {
+
     /// <summary>
     /// 描述：對Excel文件的創建表、讀取、寫入數據操作.
     /// 程序員：谢堂文(Darren Xie)
@@ -14,6 +15,7 @@ namespace zic_dotnet {
     /// </summary>
     public static class MyExcelUtls {
         #region 取文件的擴展名
+
         /// <summary>
         /// 取文件的擴展名
         /// </summary>
@@ -25,9 +27,11 @@ namespace zic_dotnet {
             sFile = sFile.Substring(sFile.LastIndexOf(".")).ToLower();
             return sFile;
         }
-        #endregion
+
+        #endregion 取文件的擴展名
 
         #region 檢查一個文件是不是2007版本的Excel文件
+
         /// <summary>
         /// 檢查一個文件是不是2007版本的Excel文件
         /// </summary>
@@ -44,14 +48,14 @@ namespace zic_dotnet {
                     break;
                 default:
                     throw new Exception("你要檢查" + FileName + "是2007版本的Excel文件還是之前版本的Excel文件，但是這個文件不是一個有效的Excel文件。");
-
             }
             return r;
         }
 
-        #endregion
+        #endregion 檢查一個文件是不是2007版本的Excel文件
 
         #region Excel的連接串
+
         //Excel的連接串
         //2007和之前的版本是有區別的，但是新的可以讀取舊的
 
@@ -62,14 +66,12 @@ namespace zic_dotnet {
         /// <param name="no_HDR">第一行不是標題：true;第一行是標題：false;</param>
         /// <returns>String</returns>
         public static String GetExcelConnectionString(string excelFile, bool no_HDR) {
-
             try {
                 if (no_HDR) {
                     if (IsExcel2007(excelFile)) {
                         return "Provider=Microsoft.Ace.OleDb.12.0;" + "data source=" + excelFile + ";Extended Properties='Excel 12.0; HDR=NO; IMEX=1'"; //此连接可以操作.xls与.xlsx文件
                     } else {
                         return "Provider=Microsoft.Jet.OleDb.4.0;" + "data source=" + excelFile + ";Extended Properties='Excel 8.0; HDR=NO; IMEX=1'"; //此连接只能操作Excel2007之前(.xls)文件
-
                     }
                 } else {
                     return GetExcelConnectionString(excelFile);
@@ -78,6 +80,7 @@ namespace zic_dotnet {
                 throw new Exception(ee.Message);
             }
         }
+
         /// <summary>
         /// Excel文件在服務器上的OLE連接字符串
         /// </summary>
@@ -89,12 +92,12 @@ namespace zic_dotnet {
                     return "Provider=Microsoft.Ace.OleDb.12.0;" + "data source=" + excelFile + ";Extended Properties='Excel 12.0;  IMEX=1'"; //此连接可以操作.xls与.xlsx文件
                 } else {
                     return "Provider=Microsoft.Jet.OleDb.4.0;" + "data source=" + excelFile + ";Extended Properties='Excel 8.0;  IMEX=1'"; //此连接只能操作Excel2007之前(.xls)文件
-
                 }
             } catch (Exception ee) {
                 throw new Exception(ee.Message);
             }
         }
+
         /// <summary>
         /// Excel文件在服務器上的OLE連接字符串
         /// </summary>
@@ -106,15 +109,16 @@ namespace zic_dotnet {
                     return "Provider=Microsoft.Ace.OleDb.12.0;" + "data source=" + excelFile + ";Extended Properties='Excel 12.0;'"; //此连接可以操作.xls与.xlsx文件
                 } else {
                     return "Provider=Microsoft.Jet.OleDb.4.0;" + "data source=" + excelFile + ";Extended Properties='Excel 8.0;'"; //此连接只能操作Excel2007之前(.xls)文件
-
                 }
             } catch (Exception ee) {
                 throw new Exception(ee.Message);
             }
         }
-        #endregion
+
+        #endregion Excel的連接串
 
         #region 讀取Excel中的所有表名
+
         //讀取Excel中的所有表名
         //读取Excel文件时，可能一个文件中会有多个Sheet，因此获取Sheet的名称是非常有用的
 
@@ -158,7 +162,6 @@ namespace zic_dotnet {
             System.Data.DataTable dt = null;
 
             try {
-
                 dt = GetExcelSheetNames2DataTable(excelFile);
                 if (dt == null) {
                     return null;
@@ -179,6 +182,7 @@ namespace zic_dotnet {
                 }
             }
         }
+
         /// <summary>
         /// 根据Excel物理路径获取Excel文件中所有表名
         /// </summary>
@@ -202,11 +206,12 @@ namespace zic_dotnet {
             } catch (Exception ee) {
                 throw ee;
             }
-
         }
-        #endregion
+
+        #endregion 讀取Excel中的所有表名
 
         #region Sheet2DataTable
+
         /// <summary>
         /// 獲取Excel文件中指定SheetName的內容到DataTable
         /// </summary>
@@ -221,6 +226,7 @@ namespace zic_dotnet {
                 throw new Exception(ee.Message);
             }
         }
+
         /// <summary>
         /// 獲取Excel文件中指定SheetName的內容到DataTable
         /// </summary>
@@ -234,9 +240,11 @@ namespace zic_dotnet {
                 throw new Exception(ee.Message);
             }
         }
-        #endregion
+
+        #endregion Sheet2DataTable
 
         #region Excel2DataSet
+
         /// <summary>
         /// 獲取Excel文件中所有Sheet的內容到DataSet，以Sheet名做DataTable名
         /// </summary>
@@ -259,6 +267,7 @@ namespace zic_dotnet {
                 throw new Exception(ee.Message);
             }
         }
+
         /// <summary>
         /// 獲取Excel文件中指定Sheet的內容到DataSet，以Sheet名做DataTable名
         /// </summary>
@@ -280,9 +289,11 @@ namespace zic_dotnet {
                 throw new Exception(ee.Message);
             }
         }
-        #endregion
+
+        #endregion Excel2DataSet
 
         #region 刪除過時文件
+
         //刪除過時文件
         public static bool DeleteOldFile(string servepath) {
             try {
@@ -293,9 +304,11 @@ namespace zic_dotnet {
                 throw new Exception(ee.Message + "刪除" + servepath + "出錯.");
             }
         }
-        #endregion
+
+        #endregion 刪除過時文件
 
         #region 在Excel文件中創建表,Excel物理路径如果文件不是一個已存在的文件，會自動創建文件
+
         /// <summary>
         /// 在一個Excel文件中創建Sheet
         /// </summary>
@@ -339,9 +352,11 @@ namespace zic_dotnet {
                 throw ee;
             }
         }
-        #endregion
+
+        #endregion 在Excel文件中創建表,Excel物理路径如果文件不是一個已存在的文件，會自動創建文件
 
         #region DataTable2Sheet,把一個DataTable寫入Excel中的表,Excel物理路径,如果文件不是一個已存在的文件，會自動創建文件
+
         /// <summary>
         /// 把一個DataTable寫入到一個或多個Sheet中
         /// </summary>
@@ -355,6 +370,7 @@ namespace zic_dotnet {
                 throw ee;
             }
         }
+
         /// <summary>
         /// 把一個DataTable寫入到一個或多個Sheet中
         /// </summary>
@@ -369,6 +385,7 @@ namespace zic_dotnet {
                 throw ee;
             }
         }
+
         /// <summary>
         /// 把一個DataTable寫入到一個或多個Sheet中
         /// </summary>
@@ -383,6 +400,7 @@ namespace zic_dotnet {
                 throw ee;
             }
         }
+
         /// <summary>
         /// 把一個DataTable寫入到一個或多個Sheet中
         /// </summary>
@@ -437,13 +455,10 @@ namespace zic_dotnet {
                                 }
                                 cmd.CommandText = strSQL.Append(" insert into [" + sheetNameT + "]( ")
                                 .Append(strfield.ToString()).Append(") values (").Append(strvalue).Append(")").ToString();
-
                             }
                             cmd.ExecuteNonQuery();
                             strSQL.Remove(0, strSQL.Length);
                         }
-
-
 
                         conn.Close();
                     }
@@ -512,6 +527,7 @@ namespace zic_dotnet {
                 throw ee;
             }
         }
-        #endregion
+
+        #endregion DataTable2Sheet,把一個DataTable寫入Excel中的表,Excel物理路径,如果文件不是一個已存在的文件，會自動創建文件
     }
 }

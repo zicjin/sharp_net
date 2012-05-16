@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.ServiceModel.Description;
-using System.Net;
-using System.IO;
-using System.Xml.Serialization;
+﻿using System.Net;
 
 namespace zic_dotnet {
+
     public static class RestClient {
+
         //http://msdn.microsoft.com/zh-cn/library/system.net.webclient(v=VS.100).aspx
         public static WebClient client { get; set; }
-        static RestClient(){
+
+        static RestClient() {
             client = new WebClient { Encoding = System.Text.Encoding.UTF8 };
             client.Headers.Add("user-agent", ".NET/4.0");
             client.Headers.Add("content-type", "application/json; charset=utf-8");

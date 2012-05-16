@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.IO;
 using System.Runtime.Serialization.Json;
-using System.Text.RegularExpressions;
-using System.IO;
+using System.Text;
 
 namespace zic_dotnet {
+
     public class JsonHelper {
 
         /// <summary>
@@ -31,6 +27,5 @@ namespace zic_dotnet {
             T obj = (T)ser.ReadObject(ms);
             return obj;
         }
-
     }
 }

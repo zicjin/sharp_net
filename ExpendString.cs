@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace zic_dotnet {
+
     public static class ExpendString {
 
         public static int LengthCar(this string input) {
@@ -22,10 +20,10 @@ namespace zic_dotnet {
         }
 
         public static string Interception(this string input, int startIndex, int length) {
-            if (string.IsNullOrEmpty(input)) 
+            if (string.IsNullOrEmpty(input))
                 return string.Empty;
             int len = input.Length;
-            if (startIndex >= len) 
+            if (startIndex >= len)
                 return string.Empty;
 
             bool flag = false;

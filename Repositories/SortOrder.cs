@@ -1,11 +1,9 @@
-﻿
-namespace zic_dotnet.Repositories
-{
+﻿namespace zic_dotnet.Repositories {
+
     /// <summary>
     /// Represents the sorting style.
     /// </summary>
-    public enum SortOrder
-    {
+    public enum SortOrder {
         /// <summary>
         /// Indicates that the sorting style is not specified.
         /// </summary>
