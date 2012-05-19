@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\IDomainEvent.cs" />
+    <Compile Include="SmtpAppender.cs" />
     <Compile Include="ZicLog4Net.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryContext.cs" />

@@ -13,7 +13,7 @@ using log4net.Repository;
 namespace zic_dotnet {
 
     public sealed class ZicLog4Net {
-        private static PatternLayout ZicLayout = new PatternLayout("时间：%date 线程ID：[%thread] 级别：%-5level 触发源：%logger property:[%property{NDC}] - " + Environment.NewLine + "Message：%message%newline");
+        private static PatternLayout ZicLayout = new PatternLayout(Environment.NewLine + "时间：%date 线程ID：[%thread] 级别：%-5level 触发源：%logger property:[%property{NDC}] - " + Environment.NewLine + "Message：%message%newline");
         private static IDictionary<string, LevelRangeFilter> Filters = new Dictionary<string, LevelRangeFilter>();
         private static LevelRangeFilter FatalErrorFilter = new LevelRangeFilter();
         private static LevelRangeFilter FatalFilter = new LevelRangeFilter();
@@ -23,9 +23,6 @@ namespace zic_dotnet {
         private static LevelRangeFilter DebugFilter = new LevelRangeFilter();
 
         private ZicLog4Net() {
-            ZicLayout.Header = "New Log ------------------------------" + Environment.NewLine;
-            ZicLayout.Footer = "By ZIC" + Environment.NewLine;
-
             FatalFilter.LevelMax = log4net.Core.Level.Fatal;
             FatalFilter.LevelMin = log4net.Core.Level.Fatal;
             FatalFilter.ActivateOptions();
@@ -68,35 +65,37 @@ namespace zic_dotnet {
 
                 //FileLog
                 foreach (KeyValuePair<string, LevelRangeFilter> Filter in Filters) {
-                    RollingFileAppender ZicFileAppender = new RollingFileAppender();
-                    ZicFileAppender.Name = domain + "_" + Filter.Key + "_FileAppender";
-                    ZicFileAppender.File = "Log_" + domain + "\\" + Filter.Key + "\\";
-                    ZicFileAppender.AppendToFile = true;
-                    ZicFileAppender.RollingStyle = RollingFileAppender.RollingMode.Date;
-                    ZicFileAppender.DatePattern = "yyyy-MM-dd'.log'";
-                    ZicFileAppender.StaticLogFileName = false;
-                    ZicFileAppender.Layout = ZicLayout;
-                    ZicFileAppender.AddFilter(Filter.Value);
-                    ZicFileAppender.ActivateOptions();
-                    BasicConfigurator.Configure(repository, ZicFileAppender);
+                    RollingFileAppender fileAppender = new RollingFileAppender();
+                    fileAppender.Name = domain + "_" + Filter.Key + "_FileAppender";
+                    fileAppender.File = "Log_" + domain + "\\" + Filter.Key + "\\";
+                    fileAppender.AppendToFile = true;
+                    fileAppender.RollingStyle = RollingFileAppender.RollingMode.Date;
+                    fileAppender.DatePattern = "yyyy-MM-dd'.log'";
+                    fileAppender.StaticLogFileName = false;
+                    fileAppender.Layout = ZicLayout;
+                    fileAppender.AddFilter(Filter.Value);
+                    fileAppender.ActivateOptions();
+                    BasicConfigurator.Configure(repository, fileAppender);
                 }
 
                 //SmtpLog
-                SmtpAppender ZicSmtpAppender = new SmtpAppender();
-                ZicSmtpAppender.Name = domain + "_SmtpAppender";
-                ZicSmtpAppender.Authentication = SmtpAppender.SmtpAuthentication.Basic;
-                ZicSmtpAppender.To = "zicjin@gmail.com";
-                ZicSmtpAppender.From = "zicjin@gmail.com";
-                ZicSmtpAppender.Username = "zicjin";
-                ZicSmtpAppender.Password = "rWcsarpi2#gg";
-                ZicSmtpAppender.Subject = domain + "_logging message";
-                ZicSmtpAppender.SmtpHost = "smtp.gmail.com";
-                ZicSmtpAppender.BufferSize = 512;
-                ZicSmtpAppender.Lossy = true;
-                ZicSmtpAppender.Layout = ZicLayout;
-                ZicSmtpAppender.AddFilter(FatalErrorFilter);
-                ZicSmtpAppender.ActivateOptions();
-                BasicConfigurator.Configure(repository, ZicSmtpAppender);
+                ZicSmtpAppender smtpAppender = new ZicSmtpAppender();
+                smtpAppender.Name = domain + "_SmtpAppender";
+                smtpAppender.Authentication = ZicSmtpAppender.SmtpAuthentication.Basic;
+                smtpAppender.To = "zicjin@gmail.com";
+                smtpAppender.From = "zicjin@gmail.com";
+                smtpAppender.Username = "zicjin";
+                smtpAppender.Password = "rWcsarpi2#gg";
+                smtpAppender.EnableSSL = true;
+                smtpAppender.Subject = domain + "_logging message";
+                smtpAppender.SmtpHost = "smtp.gmail.com";
+                smtpAppender.Port = 25;
+                smtpAppender.BufferSize = 1;
+                smtpAppender.Lossy = true;
+                smtpAppender.Layout = ZicLayout;
+                //smtpAppender.AddFilter(FatalErrorFilter);
+                smtpAppender.ActivateOptions();
+                BasicConfigurator.Configure(repository, smtpAppender);
 
                 //TraceLog
                 TraceAppender ZicTranceAppender = new TraceAppender();
