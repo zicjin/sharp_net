@@ -82,16 +82,23 @@ namespace zic_dotnet {
                 ZicSmtpAppender smtpAppender = new ZicSmtpAppender();
                 smtpAppender.Name = domain + "_SmtpAppender";
                 smtpAppender.Authentication = ZicSmtpAppender.SmtpAuthentication.Basic;
-                smtpAppender.To = "zicjin@gmail.com";
+                smtpAppender.To = "zicjin@gmail.com,zicjin@qq.com";
                 smtpAppender.From = "zicjin@gmail.com";
                 smtpAppender.Username = "zicjin@gmail.com";
-                smtpAppender.Password = "rWcsarpi2#gg";
+                smtpAppender.Password = "rWcsarpi2#gm";
                 smtpAppender.EnableSSL = true;
-                smtpAppender.Subject = domain + "_logging message";
+                smtpAppender.Subject = domain + " logging message";
                 smtpAppender.SmtpHost = "smtp.gmail.com";
-                smtpAppender.Port = 465;
-                smtpAppender.BufferSize = 1;
-                smtpAppender.Lossy = true;
+                smtpAppender.Port = 587;
+
+                //zic：邮件日志与其他日志同级别（甚至更高），所以不允许丢失或缓冲，所以Buffer、lossy、Evaluator全部忽略
+                smtpAppender.BufferSize = 0;
+                //如果缓冲区溢出在触发事件之前，日志事件可能会丢失。
+                //如果log4net.Appender.BufferingAppenderSkeleton.Lossy设置为false防止日志事件被丢失。
+                //如果log4net.Appender.BufferingAppenderSkeleton.Lossy设置为true，那么log4net.Appender.BufferingAppenderSkeleton.Evaluator必须被指定。
+                //zic：也就是说如果LevelEvaluator设为WARN，则在WARN或之上级别的日志肯定不会丢失，之下级别的日志有可能因为缓冲区溢出而丢失。
+                smtpAppender.Lossy = false;
+
                 smtpAppender.Layout = ZicLayout;
                 smtpAppender.AddFilter(FatalErrorFilter);
                 smtpAppender.ActivateOptions();
