@@ -76,34 +76,28 @@ namespace zic_dotnet {
                     fileAppender.AddFilter(Filter.Value);
                     fileAppender.ActivateOptions();
                     BasicConfigurator.Configure(repository, fileAppender);
+
+                    //SmtpLog
+                    ZicSmtpAppender smtpAppender = new ZicSmtpAppender();
+                    smtpAppender.Name = domain + "_SmtpAppender";
+                    smtpAppender.Authentication = ZicSmtpAppender.SmtpAuthentication.Basic;
+                    smtpAppender.To = "zicjin@qq.com,zicjin@qq.com";
+                    smtpAppender.From = "zicjin@gmail.com";
+                    smtpAppender.Username = "zicjin@gmail.com";
+                    smtpAppender.Password = "rWcsarpi2#gg";
+                    smtpAppender.EnableSSL = true;
+                    smtpAppender.Subject = domain + " logging message";
+                    smtpAppender.SmtpHost = "smtp.gmail.com";
+                    smtpAppender.Port = 465;
+                    smtpAppender.BufferSize = 0;
+                    smtpAppender.Lossy = true;
+                    smtpAppender.Layout = ZicLayout;
+                    smtpAppender.AddFilter(Filter.Value);
+                    smtpAppender.ActivateOptions();
+                    BasicConfigurator.Configure(repository, smtpAppender);
                 }
 
-                //SmtpLog
-                ZicSmtpAppender smtpAppender = new ZicSmtpAppender();
-                smtpAppender.Name = domain + "_SmtpAppender";
-                smtpAppender.Authentication = ZicSmtpAppender.SmtpAuthentication.Basic;
-                smtpAppender.To = "zicjin@gmail.com";
-                smtpAppender.From = "zicjin@gmail.com";
-                smtpAppender.Username = "zicjin";
-                smtpAppender.Password = "rWcsarpi2#gg";
-                smtpAppender.EnableSSL = true;
-                smtpAppender.Subject = domain + "_logging message";
-                smtpAppender.SmtpHost = "smtp.gmail.com";
-                smtpAppender.Port = 25;
-                smtpAppender.BufferSize = 1;
-                smtpAppender.Lossy = true;
-                smtpAppender.Layout = ZicLayout;
-                //smtpAppender.AddFilter(FatalErrorFilter);
-                smtpAppender.ActivateOptions();
-                BasicConfigurator.Configure(repository, smtpAppender);
 
-                //TraceLog
-                TraceAppender ZicTranceAppender = new TraceAppender();
-                ZicTranceAppender.Name = domain + "_TranceAppender";
-                ZicTranceAppender.Layout = ZicLayout;
-                ZicTranceAppender.AddFilter(FatalFilter);
-                ZicTranceAppender.ActivateOptions();
-                BasicConfigurator.Configure(repository, ZicTranceAppender);
             }
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using log4net;
@@ -240,7 +241,20 @@ namespace log4net.Appender {
                     writer.Write(t);
                 }
 
-                SendEmail(writer.ToString());
+                SmtpClient smtpClient = new SmtpClient(m_smtpHost, m_port);
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.EnableSsl = m_enableSSL;
+
+                if (m_authentication == SmtpAuthentication.Basic) {
+                    smtpClient.Credentials = new NetworkCredential(m_username, m_password);
+                } else if (m_authentication == SmtpAuthentication.Ntlm) {
+                    smtpClient.Credentials = CredentialCache.DefaultNetworkCredentials;
+                }
+
+                MailMessage mailMessage = new MailMessage(m_from, m_to, m_subject, writer.ToString());
+                mailMessage.Priority = m_mailPriority;
+                smtpClient.Send(mailMessage);
+
             } catch (Exception e) {
                 ErrorHandler.Error("Error occurred while sending e-mail notification.", e);
             }
@@ -248,40 +262,6 @@ namespace log4net.Appender {
 
         override protected bool RequiresLayout {
             get { return true; }
-        }
-
-        virtual protected void SendEmail(string messageBody) {
-            // .NET 2.0 has a new API for SMTP email System.Net.Mail
-            // This API supports credentials and multiple hosts correctly.
-            // The old API is deprecated.
-
-            // Create and configure the smtp client
-            SmtpClient smtpClient = new SmtpClient();
-            if (m_smtpHost != null && m_smtpHost.Length > 0) {
-                smtpClient.Host = m_smtpHost;
-            }
-            smtpClient.Port = m_port;
-            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpClient.EnableSsl = m_enableSSL;
-
-            if (m_authentication == SmtpAuthentication.Basic) {
-                // Perform basic authentication
-                smtpClient.Credentials = new System.Net.NetworkCredential(m_username, m_password);
-            } else if (m_authentication == SmtpAuthentication.Ntlm) {
-                // Perform integrated authentication (NTLM)
-                smtpClient.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
-            }
-
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.Body = messageBody;
-            mailMessage.From = new MailAddress(m_from);
-            mailMessage.To.Add(m_to);
-            mailMessage.Subject = m_subject;
-            mailMessage.Priority = m_mailPriority;
-
-            // TODO: Consider using SendAsync to send the message without blocking. This would be a change in
-            // behaviour compared to .NET 1.x. We would need a SendCompletedCallback to log errors.
-            smtpClient.Send(mailMessage);
         }
 
         public enum SmtpAuthentication {
