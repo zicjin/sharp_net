@@ -12,6 +12,10 @@
     <AssemblyName>zic-dotnet</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -116,7 +120,7 @@
     <Compile Include="Specifications\ParameterRebinder.cs" />
     <Compile Include="Specifications\Specification.cs" />
     <Compile Include="FaultData.cs" />
-    <Compile Include="UserInterface\Web\Authentication.cs" />
+    <Compile Include="UserInterface\Web\FormsAuthenticationWithAuths.cs" />
     <Compile Include="UserInterface\Web\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="Domain\DomainException.cs" />
