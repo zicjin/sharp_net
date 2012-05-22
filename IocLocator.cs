@@ -41,40 +41,44 @@ namespace zic_dotnet {
             return overrides;
         }
 
-        public T GetService<T>() {
+        public T GetImple<T>() {
             return Container.Resolve<T>();
         }
 
-        public T GetService<T>(string name) {
+        public T GetImple<T>(string name) {
             return Container.Resolve<T>(name);
         }
 
-        public T GetService<T>(object overridedArguments) {
+        public T GetImple<T>(object overridedArguments) {
             var overrides = GetParameterOverrides(overridedArguments);
             return Container.Resolve<T>(overrides.ToArray());
         }
 
-        public T GetService<T>(string name, object overridedArguments) {
+        public T GetImple<T>(string name, object overridedArguments) {
             var overrides = GetParameterOverrides(overridedArguments);
             return Container.Resolve<T>(name, overrides.ToArray());
         }
 
-        public object GetService(Type serviceType) {
+        public object GetImple(Type serviceType) {
             return Container.Resolve(serviceType);
         }
 
-        public object GetService(string name, Type serviceType) {
+        public object GetImple(string name, Type serviceType) {
             return Container.Resolve(serviceType, name);
         }
 
-        public object GetService(Type serviceType, object overridedArguments) {
+        public object GetImple(Type serviceType, object overridedArguments) {
             var overrides = GetParameterOverrides(overridedArguments);
             return Container.Resolve(serviceType, overrides.ToArray());
         }
 
-        public object GetService(string name, Type serviceType, object overridedArguments) {
+        public object GetImple(string name, Type serviceType, object overridedArguments) {
             var overrides = GetParameterOverrides(overridedArguments);
             return Container.Resolve(serviceType, name, overrides.ToArray());
+        }
+
+        public object GetService(Type serviceType) {
+            return GetImple(serviceType);
         }
     }
 }

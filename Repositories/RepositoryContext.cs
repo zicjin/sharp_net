@@ -157,7 +157,7 @@ namespace zic_dotnet.Repositories {
         /// <returns>The instance of the repository.</returns>
         public IRepository<T> GetRepository<T>()
             where T : class, IAggregateRoot {
-            return IocLocator.Instance.GetService<IRepository<T>>(new { context = this });
+            return IocLocator.Instance.GetImple<IRepository<T>>(new { context = this });
         }
 
         #endregion Public Methods
