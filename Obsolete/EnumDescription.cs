@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Reflection;
 
-namespace zic_dotnet {
+//建议改用AttachData
+namespace zic_dotnet.Obsolete {
 
     /// <summary>
     /// 把枚举值按照指定的文本显示
