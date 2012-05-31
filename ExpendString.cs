@@ -6,6 +6,14 @@ namespace zic_dotnet {
 
     public static class ExpendString {
 
+        public static string EmailLinkBtn(this string email) {
+            if (email.Split('@')[1] == "gmail.com") {
+                return "<a href='http://" + email.Split('@')[1] + "'>" + email + "</a>";
+            } else {
+                return "<a href='http://mail." + email.Split('@')[1] + "'>" + email + "</a>";
+            }
+        }
+
         public static int LengthCar(this string input) {
             if (string.IsNullOrEmpty(input))
                 return 0;

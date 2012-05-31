@@ -107,7 +107,6 @@
     <Compile Include="DynamicMethodExecutor.cs" />
     <Compile Include="FastEval.cs" />
     <Compile Include="RandomPassword.cs" />
-    <Compile Include="SmtpAppender.cs" />
     <Compile Include="UnitTest.cs" />
     <Compile Include="ZicLog4Net.cs" />
     <Compile Include="Repositories\IRepository.cs" />

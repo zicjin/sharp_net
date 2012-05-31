@@ -45,5 +45,6 @@ namespace zic_dotnet {
             }
             return builder.ToString();
         }
+
     }
 }
