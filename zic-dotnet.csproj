@@ -82,6 +82,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.ServiceModel" />
@@ -106,6 +107,7 @@
     <Compile Include="Domain\IDomainEvent.cs" />
     <Compile Include="DynamicMethodExecutor.cs" />
     <Compile Include="FastEval.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="RandomPassword.cs" />
     <Compile Include="UnitTest.cs" />
     <Compile Include="ZicLog4Net.cs" />
