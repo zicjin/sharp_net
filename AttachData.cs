@@ -25,6 +25,14 @@ namespace zic_dotnet {
     }
     //AgeRange.GetAttachedData<string>(DescripByLang.English);
 
+    //部署N个网站分别支持N个语言，web.config设定global_lang
+    public static class zGlobal {
+        public static DescripByLang GlobalLang { get; set; }
+        public static string GetText(this AgeRange range) {
+            return range.GetAttachedData<string>(GlobalLang);
+        }
+    }
+
     //http://blog.zhaojie.me/2009/01/attachdataextensions.html
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     public class AttachDataAttribute : Attribute {
