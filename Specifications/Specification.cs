@@ -4,86 +4,52 @@ using System.Linq.Expressions;
 namespace zic_dotnet.Specifications {
 
     /// <summary>
-    /// Represents the base class for specifications.
+    /// Represents that the implemented classes are specifications. For more
+    /// information about the specification pattern, please refer to
+    /// http://martinfowler.com/apsupp/spec.pdf.
     /// </summary>
     /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
-    public abstract class Specification<T> : ISpecification<T> {
-        #region Public Methods
+    public interface ISpecification<T> {
 
-        /// <summary>
-        /// Evaluates a LINQ expression to its corresponding specification.
-        /// </summary>
-        /// <param name="expression">The LINQ expression to be evaluated.</param>
-        /// <returns>The specification which represents the same semantics as the given LINQ expression.</returns>
+        bool IsSatisfiedBy(T obj);
+
+        ISpecification<T> And(ISpecification<T> other);
+
+        ISpecification<T> Or(ISpecification<T> other);
+
+        ISpecification<T> AndNot(ISpecification<T> other);
+
+        ISpecification<T> Not();
+
+        Expression<Func<T, bool>> GetExpression();
+    }
+
+    public abstract class Specification<T> : ISpecification<T> {
+
         public static Specification<T> Eval(Expression<Func<T, bool>> expression) {
             return new ExpressionSpecification<T>(expression);
         }
 
-        #endregion Public Methods
-
-        #region ISpecification<T> Members
-
-        /// <summary>
-        /// Returns a <see cref="System.Boolean"/> value which indicates whether the specification
-        /// is satisfied by the given object.
-        /// </summary>
-        /// <param name="obj">The object to which the specification is applied.</param>
-        /// <returns>True if the specification is satisfied, otherwise false.</returns>
         public virtual bool IsSatisfiedBy(T obj) {
             return this.GetExpression().Compile()(obj);
         }
 
-        /// <summary>
-        /// Combines the current specification instance with another specification instance
-        /// and returns the combined specification which represents that both the current and
-        /// the given specification must be satisfied by the given object.
-        /// </summary>
-        /// <param name="other">The specification instance with which the current specification
-        /// is combined.</param>
-        /// <returns>The combined specification instance.</returns>
         public ISpecification<T> And(ISpecification<T> other) {
             return new AndSpecification<T>(this, other);
         }
 
-        /// <summary>
-        /// Combines the current specification instance with another specification instance
-        /// and returns the combined specification which represents that either the current or
-        /// the given specification should be satisfied by the given object.
-        /// </summary>
-        /// <param name="other">The specification instance with which the current specification
-        /// is combined.</param>
-        /// <returns>The combined specification instance.</returns>
         public ISpecification<T> Or(ISpecification<T> other) {
             return new OrSpecification<T>(this, other);
         }
 
-        /// <summary>
-        /// Combines the current specification instance with another specification instance
-        /// and returns the combined specification which represents that the current specification
-        /// should be satisfied by the given object but the specified specification should not.
-        /// </summary>
-        /// <param name="other">The specification instance with which the current specification
-        /// is combined.</param>
-        /// <returns>The combined specification instance.</returns>
         public ISpecification<T> AndNot(ISpecification<T> other) {
             return new AndNotSpecification<T>(this, other);
         }
 
-        /// <summary>
-        /// Reverses the current specification instance and returns a specification which represents
-        /// the semantics opposite to the current specification.
-        /// </summary>
-        /// <returns>The reversed specification instance.</returns>
         public ISpecification<T> Not() {
             return new NotSpecification<T>(this);
         }
 
-        /// <summary>
-        /// Gets the LINQ expression which represents the current specification.
-        /// </summary>
-        /// <returns>The LINQ expression.</returns>
         public abstract Expression<Func<T, bool>> GetExpression();
-
-        #endregion ISpecification<T> Members
     }
 }

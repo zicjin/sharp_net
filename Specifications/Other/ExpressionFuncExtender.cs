@@ -2,8 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace zic_dotnet.Specifications {
-
+namespace zic_dotnet.Specifications.Other {
     /// <summary>
     /// Represents the extender for Expression[Func[T, bool]] type.
     /// This is part of the solution which solves
@@ -12,7 +11,6 @@ namespace zic_dotnet.Specifications {
     /// refer to http://blogs.msdn.com/b/meek/archive/2008/05/02/linq-to-entities-combining-predicates.aspx.
     /// </summary>
     public static class ExpressionFuncExtender {
-        #region Private Methods
 
         private static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second, Func<Expression, Expression, Expression> merge) {
             // build parameter map (from parameters of second to parameters of first)
@@ -24,32 +22,12 @@ namespace zic_dotnet.Specifications {
             return Expression.Lambda<T>(merge(first.Body, secondBody), first.Parameters);
         }
 
-        #endregion Private Methods
-
-        #region Public Methods
-
-        /// <summary>
-        /// Combines two given expressions by using the AND semantics.
-        /// </summary>
-        /// <typeparam name="T">The type of the object.</typeparam>
-        /// <param name="first">The first part of the expression.</param>
-        /// <param name="second">The second part of the expression.</param>
-        /// <returns>The combined expression.</returns>
         public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second) {
             return first.Compose(second, Expression.And);
         }
 
-        /// <summary>
-        /// Combines two given expressions by using the OR semantics.
-        /// </summary>
-        /// <typeparam name="T">The type of the object.</typeparam>
-        /// <param name="first">The first part of the expression.</param>
-        /// <param name="second">The second part of the expression.</param>
-        /// <returns>The combined expression.</returns>
         public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second) {
             return first.Compose(second, Expression.Or);
         }
-
-        #endregion Public Methods
     }
 }

@@ -11,29 +11,15 @@ namespace zic_dotnet.Specifications {
     /// refer to http://blogs.msdn.com/b/meek/archive/2008/05/02/linq-to-entities-combining-predicates.aspx.
     /// </summary>
     internal class ParameterRebinder : ExpressionVisitor {
-        #region Private Fields
-
         private readonly Dictionary<ParameterExpression, ParameterExpression> map;
-
-        #endregion Private Fields
-
-        #region Ctor
 
         internal ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map) {
             this.map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
         }
 
-        #endregion Ctor
-
-        #region Internal Static Methods
-
         internal static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp) {
             return new ParameterRebinder(map).Visit(exp);
         }
-
-        #endregion Internal Static Methods
-
-        #region Protected Methods
 
         protected override Expression VisitParameter(ParameterExpression p) {
             ParameterExpression replacement;
@@ -43,6 +29,5 @@ namespace zic_dotnet.Specifications {
             return base.VisitParameter(p);
         }
 
-        #endregion Protected Methods
     }
 }
