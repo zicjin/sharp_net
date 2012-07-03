@@ -109,6 +109,7 @@
     <Compile Include="FastEval.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="RandomPassword.cs" />
+    <Compile Include="Repositories\EFRepository.cs" />
     <Compile Include="UnitTest.cs" />
     <Compile Include="ZicLog4Net.cs" />
     <Compile Include="Repositories\IRepository.cs" />
