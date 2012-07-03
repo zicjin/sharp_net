@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -7,17 +8,17 @@ namespace zic_dotnet {
     public static class UrlBuild {
 
         static UrlBuild() {
+            ControlDeploy = eControlDeploy.ByDebug;
             JsHead = "/js/";
             JsHeadDeploy = "/js/__build/";
             CssHead = "/css/";
             CssHeadDeploy = "/css/__build/";
             ImgHead = "/css/images/";
             ImgHeadDeploy = "/css/images/";
-            ControlDeploy = eControlDeploy.ByDebug;
-            JsRepoFix = "zic-js";
-            JsRepoDeployFix = "__build";
-            CssRepoFix = "zic-css";
-            CssRepoDeployFix = "__build";
+            //JsRepoFix = "zic-js";
+            //JsRepoDeployFix = "__build";
+            //CssRepoFix = "zic-css";
+            //CssRepoDeployFix = "__build";
         }
 
         public enum eControlDeploy {
@@ -56,13 +57,14 @@ namespace zic_dotnet {
         }
 
         public static string ScriptUrl(string file) {
-            if (!String.IsNullOrEmpty(JsRepoFix) && file.Contains(JsRepoFix) && IsDeploy())
-                return (JsHeadDeploy + file).Replace(JsRepoDeployFix + "/" + JsRepoFix, JsRepoFix + "/" + JsRepoDeployFix);
+            //if (!String.IsNullOrEmpty(JsRepoFix) && file.Contains(JsRepoFix) && IsDeploy())
+            //    return (JsHeadDeploy + file).Replace(JsRepoDeployFix + "/" + JsRepoFix, JsRepoFix + "/" + JsRepoDeployFix);
             return (IsDeploy() ? JsHeadDeploy : JsHead) + file;
         }
 
         public static string ScriptDoc(string file) {
-            return "<script type='text/javascript' src='" + ScriptUrl(file) + "'></script>";
+            StringBuilder Path = new StringBuilder();
+            return Path.AppendFormat("<script type='text/javascript' src='{0}'></script>", ScriptUrl(file)).ToString();
         }
 
         public static IHtmlString ScriptUrl(this HtmlHelper helper, string file) {
@@ -74,13 +76,14 @@ namespace zic_dotnet {
         }
 
         public static string CssUrl(string file) {
-            if (!String.IsNullOrEmpty(CssRepoFix) && file.Contains(CssRepoFix) && IsDeploy())
-                return (CssHeadDeploy + file).Replace(CssRepoDeployFix + "/" + CssRepoFix, CssRepoFix + "/" + CssRepoDeployFix);
+            //if (!String.IsNullOrEmpty(CssRepoFix) && file.Contains(CssRepoFix) && IsDeploy())
+            //    return (CssHeadDeploy + file).Replace(CssRepoDeployFix + "/" + CssRepoFix, CssRepoFix + "/" + CssRepoDeployFix);
             return (IsDeploy() ? CssHeadDeploy : CssHead) + file;
         }
 
         public static string CssDoc(string file) {
-            return "<link rel='stylesheet' type='text/css' href='" + CssUrl(file) + "' />";
+            StringBuilder Path = new StringBuilder();
+            return Path.AppendFormat("<link rel='stylesheet' type='text/css' href='{0}' />", CssUrl(file)).ToString();
         }
 
         public static IHtmlString CssUrl(this HtmlHelper helper, string file) {

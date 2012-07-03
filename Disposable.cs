@@ -11,7 +11,7 @@ namespace zic_dotnet {
         }
 
         //析构函数为Finalize，但override Finalize()无法编译
-        //析构函数是在本对象真正被回收时调用，Dispose()只是能够触发析构函数，且但支持using语法
+        //析构函数是在本对象真正被回收时调用，Dispose()只是能够触发析构函数，且支持using语法
         //如果对象未被手动调用Dispose()，则垃圾回收器会在回收时调用这个方法
         ~Disposable() {
             ClearUp(false);
@@ -24,8 +24,8 @@ namespace zic_dotnet {
             if (!IsDisposed) {
                 if (isManual)
                     DisposeCustom();
+                IsDisposed = true;
             }
-            IsDisposed = true;
         }
 
         /// <summary>
