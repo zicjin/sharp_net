@@ -3,9 +3,6 @@ using zic_dotnet.Domain;
 
 namespace zic_dotnet.Repositories {
 
-    /// <summary>
-    /// Represents that the implemented classes are repository contexts.
-    /// </summary>
     public interface IRepositoryContext : IUnitOfWork, IDisposable {
 
         Guid ID { get; }
