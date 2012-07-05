@@ -6,15 +6,15 @@ using zic_dotnet.Specifications;
 
 namespace zic_dotnet.Repositories {
 
-    public interface IRepository<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot {
+    public interface IRepository<TAggregateRoot, TKey> where TAggregateRoot : class, IAggregateRoot<TKey> {
 
-        IRepositoryContext Context { get; }
+        IRepositoryContext<TKey> Context { get; }
 
         void Add(TAggregateRoot aggregateRoot);
         void Remove(TAggregateRoot aggregateRoot);
         void Update(TAggregateRoot aggregateRoot);
         bool Exists(ISpecification<TAggregateRoot> specification);
-        TAggregateRoot GetByKey(Guid key);
+        TAggregateRoot GetByKey(params object[] keyValues);
 
         TAggregateRoot Find(ISpecification<TAggregateRoot> specification);
         IEnumerable<TAggregateRoot> FindAll();

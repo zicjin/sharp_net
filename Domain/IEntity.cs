@@ -2,8 +2,7 @@
 
 namespace zic_dotnet.Domain {
 
-    public interface IEntity {
-
-        Guid ID { get; }
+    public interface IEntity<TKey> {
+        TKey ID { get; set; }
     }
 }

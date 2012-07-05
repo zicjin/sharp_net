@@ -3,6 +3,6 @@
     /// <summary>
     /// Represents that the implemented classes are aggregate roots.
     /// </summary>
-    public interface IAggregateRoot : IEntity {
+    public interface IAggregateRoot<TKey> : IEntity<TKey> {
     }
 }

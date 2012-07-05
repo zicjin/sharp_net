@@ -7,9 +7,9 @@ using zic_dotnet.Specifications;
 
 namespace zic_dotnet.Repositories {
 
-    public abstract class Repository<TAggregateRoot> : IRepository<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot {
-        private readonly IRepositoryContext context;
-        public Repository(IRepositoryContext context) {
+    public abstract class Repository<TAggregateRoot, TKey> : IRepository<TAggregateRoot, TKey> where TAggregateRoot : class, IAggregateRoot<TKey> {
+        private readonly IRepositoryContext<TKey> context;
+        public Repository(IRepositoryContext<TKey> context) {
             this.context = context;
         }
 
@@ -17,7 +17,7 @@ namespace zic_dotnet.Repositories {
         protected abstract bool DoExists(ISpecification<TAggregateRoot> specification);
         protected abstract void DoRemove(TAggregateRoot aggregateRoot);
         protected abstract void DoUpdate(TAggregateRoot aggregateRoot);
-        protected abstract TAggregateRoot DoGetByKey(Guid key);
+        protected abstract TAggregateRoot DoGetByKey(params object[] keyValues);
 
         protected abstract TAggregateRoot DoFind(ISpecification<TAggregateRoot> specification);
         protected abstract IEnumerable<TAggregateRoot> DoFindAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder);
@@ -28,7 +28,7 @@ namespace zic_dotnet.Repositories {
         protected abstract IEnumerable<TAggregateRoot> DoFindAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
         
         #region IRepository<TAggregateRoot> Members
-        public IRepositoryContext Context {
+        public IRepositoryContext<TKey> Context {
             get { return this.context; }
         }
 
@@ -44,8 +44,8 @@ namespace zic_dotnet.Repositories {
         public void Update(TAggregateRoot aggregateRoot) {
             this.DoUpdate(aggregateRoot);
         }
-        public TAggregateRoot GetByKey(Guid key) {
-            return this.DoGetByKey(key);
+        public TAggregateRoot GetByKey(params object[] keyValues) {
+            return this.DoGetByKey(keyValues);
         }
          
         //Find

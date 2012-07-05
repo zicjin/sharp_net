@@ -4,13 +4,13 @@ using zic_dotnet.Domain;
 
 namespace zic_dotnet.Repositories {
 
-    public abstract class RepositoryContext : Disposable, IRepositoryContext {
+    public abstract class RepositoryContext<TKey> : Disposable, IRepositoryContext<TKey> {
 
         private readonly Guid id = Guid.NewGuid();
         [ThreadStatic]
         private bool committed = true;
-        public IRepository<T> GetRepository<T>() where T : class, IAggregateRoot {
-            return IocLocator.Instance.GetImple<IRepository<T>>(new { context = this });
+        public IRepository<T, TKey> GetRepository<T>() where T : class, IAggregateRoot<TKey> {
+            return IocLocator.Instance.GetImple<IRepository<T, TKey>>(new { context = this });
         }
         protected void ClearRegistrations() {
             this.newCollection.Clear();
@@ -19,18 +19,18 @@ namespace zic_dotnet.Repositories {
         }
         
         [ThreadStatic]
-        private readonly Dictionary<Guid, object> newCollection = new Dictionary<Guid, object>();
+        private readonly Dictionary<object, object> newCollection = new Dictionary<object, object>();
         [ThreadStatic]
-        private readonly Dictionary<Guid, object> modifiedCollection = new Dictionary<Guid, object>();
+        private readonly Dictionary<object, object> modifiedCollection = new Dictionary<object, object>();
         [ThreadStatic]
-        private readonly Dictionary<Guid, object> deletedCollection = new Dictionary<Guid, object>();
-        protected IEnumerable<KeyValuePair<Guid, object>> NewCollection {
+        private readonly Dictionary<object, object> deletedCollection = new Dictionary<object, object>();
+        protected IEnumerable<KeyValuePair<object, object>> NewCollection {
             get { return newCollection; }
         }
-        protected IEnumerable<KeyValuePair<Guid, object>> ModifiedCollection {
+        protected IEnumerable<KeyValuePair<object, object>> ModifiedCollection {
             get { return modifiedCollection; }
         }
-        protected IEnumerable<KeyValuePair<Guid, object>> DeletedCollection {
+        protected IEnumerable<KeyValuePair<object, object>> DeletedCollection {
             get { return deletedCollection; }
         }
 
@@ -40,8 +40,8 @@ namespace zic_dotnet.Repositories {
             get { return id; }
         }
 
-        public virtual void RegisterNew<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot {
-            if (obj.ID.Equals(Guid.Empty))
+        public virtual void RegisterNew<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot<TKey> {
+            if (obj.ID.Equals(Guid.Empty) || obj.ID == null)
                 throw new ArgumentException("The ID of the object is empty.", "obj");
             if (modifiedCollection.ContainsKey(obj.ID))
                 throw new InvalidOperationException("The object cannot be registered as a new object since it was marked as modified.");
@@ -51,8 +51,8 @@ namespace zic_dotnet.Repositories {
             committed = false;
         }
 
-        public virtual void RegisterModified<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot {
-            if (obj.ID.Equals(Guid.Empty))
+        public virtual void RegisterModified<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot<TKey> {
+            if (obj.ID.Equals(Guid.Empty) || obj.ID == null)
                 throw new ArgumentException("The ID of the object is empty.", "obj");
             if (deletedCollection.ContainsKey(obj.ID))
                 throw new InvalidOperationException("The object cannot be registered as a modified object since it was marked as deleted.");
@@ -61,8 +61,8 @@ namespace zic_dotnet.Repositories {
             committed = false;
         }
 
-        public virtual void RegisterDeleted<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot {
-            if (obj.ID.Equals(Guid.Empty))
+        public virtual void RegisterDeleted<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot<TKey> {
+            if (obj.ID.Equals(Guid.Empty) || obj.ID == null)
                 throw new ArgumentException("The ID of the object is empty.", "obj");
             if (newCollection.ContainsKey(obj.ID)) {
                 if (newCollection.Remove(obj.ID))
