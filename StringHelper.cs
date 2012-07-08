@@ -36,15 +36,5 @@ namespace zic_dotnet {
             return htmlstring;
         }
 
-        public static string GenerateRandomString(int length) {
-            var builder = new StringBuilder();
-            var random = new Random();
-            for (int i = 0; i < length; i++) {
-                char ch = Convert.ToChar(Convert.ToInt32(Math.Floor(25 * random.NextDouble() + 75)));
-                builder.Append(ch);
-            }
-            return builder.ToString();
-        }
-
     }
 }

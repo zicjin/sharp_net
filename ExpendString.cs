@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web;
 
 namespace zic_dotnet {
 
@@ -70,6 +72,40 @@ namespace zic_dotnet {
                 value = value.Replace(limit, "`");
                 return value.Split('`');
             }
+        }
+
+        public static string AppendSplit(this string value, string split, string append) {
+            value.Replace(split, "");
+            append.Replace(split, "");
+            if(String.IsNullOrEmpty(append))
+                return value;
+            if(append.StartsWith(split))
+                return value + append;
+            return value + split + append;
+        }
+
+        public static string NoHtml(this string value) {
+            if (string.IsNullOrEmpty(value))
+                return string.Empty;
+            value = Regex.Replace(value, @"<script[^>]*?>.*?</script>", "", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"<(.[^>]*)>", "", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"([\r\n])[\s]+", "", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"-->", "", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"<!--.*", "", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(quot|#34);", "\"", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(amp|#38);", "&", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(lt|#60);", "<", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(gt|#62);", ">", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(nbsp|#160);", " ", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(iexcl|#161);", "\xa1", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(cent|#162);", "\xa2", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(pound|#163);", "\xa3", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&(copy|#169);", "\xa9", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"&#(\d+);", "", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"<", "", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @">", "", RegexOptions.IgnoreCase);
+            value = Regex.Replace(value, @"\r\n", "", RegexOptions.IgnoreCase);
+            return HttpUtility.HtmlEncode(value).Trim();
         }
     }
 }

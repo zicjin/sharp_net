@@ -7,7 +7,7 @@ namespace zic_dotnet {
 
         public static List<EnumItem> ListTypeForEnum(Type enumType) {
             List<EnumItem> list = new List<EnumItem>();
-            foreach (int i in Enum.GetValues(enumType)) {
+            foreach (string i in Enum.GetValues(enumType)) {
                 list.Add(new EnumItem {
                     Text = Enum.GetName(enumType, i),
                     Value = i
@@ -19,7 +19,7 @@ namespace zic_dotnet {
 
     public class EnumItem {
 
-        public int Value { get; set; }
+        public string Value { get; set; }
 
         public string Text { get; set; }
     }

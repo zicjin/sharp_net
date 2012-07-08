@@ -83,12 +83,9 @@ namespace zic_dotnet {
             return MvcHtmlString.Create(builder.ToString(TagRenderMode.SelfClosing));
         }
 
-        public static IList<SelectListItem> ToSelectListItem<T>(
-            this IEnumerable<T> items,
-            string selectValue,
-            Func<T, string> getText,
-            Func<T, string> getValue,
-            string defaultitem) {
+        public static IList<SelectListItem> ToSelectListItem<T>( this IEnumerable<T> items,
+            Func<T, string> getText, Func<T, string> getValue,
+            string selectValue, string defaultitem) {
             IList<SelectListItem> list = items.OrderBy(i => getText(i))
                 .Select(i => new SelectListItem {
                     Selected = (getValue(i) == selectValue),
@@ -96,7 +93,7 @@ namespace zic_dotnet {
                     Value = getValue(i)
                 }).ToList();
 
-            if (!string.IsNullOrEmpty(defaultitem)) {
+            if (!String.IsNullOrEmpty(defaultitem)) {
                 list.Insert(0, new SelectListItem {
                     Text = defaultitem,
                     Value = "0"
