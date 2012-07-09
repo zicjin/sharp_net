@@ -75,10 +75,12 @@ namespace zic_dotnet {
         }
 
         public static string AppendSplit(this string value, string split, string append) {
+            if (String.IsNullOrEmpty(value))
+                return String.Empty;
             value.Replace(split, "");
-            append.Replace(split, "");
-            if(String.IsNullOrEmpty(append))
+            if (String.IsNullOrEmpty(append))
                 return value;
+            append.Replace(split, "");
             if(append.StartsWith(split))
                 return value + append;
             return value + split + append;

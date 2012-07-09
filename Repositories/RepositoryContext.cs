@@ -19,18 +19,18 @@ namespace zic_dotnet.Repositories {
         }
         
         [ThreadStatic]
-        private readonly Dictionary<object, object> newCollection = new Dictionary<object, object>();
+        private readonly Dictionary<TKey, object> newCollection = new Dictionary<TKey, object>();
         [ThreadStatic]
-        private readonly Dictionary<object, object> modifiedCollection = new Dictionary<object, object>();
+        private readonly Dictionary<TKey, object> modifiedCollection = new Dictionary<TKey, object>();
         [ThreadStatic]
-        private readonly Dictionary<object, object> deletedCollection = new Dictionary<object, object>();
-        protected IEnumerable<KeyValuePair<object, object>> NewCollection {
+        private readonly Dictionary<TKey, object> deletedCollection = new Dictionary<TKey, object>();
+        protected IEnumerable<KeyValuePair<TKey, object>> NewCollection {
             get { return newCollection; }
         }
-        protected IEnumerable<KeyValuePair<object, object>> ModifiedCollection {
+        protected IEnumerable<KeyValuePair<TKey, object>> ModifiedCollection {
             get { return modifiedCollection; }
         }
-        protected IEnumerable<KeyValuePair<object, object>> DeletedCollection {
+        protected IEnumerable<KeyValuePair<TKey, object>> DeletedCollection {
             get { return deletedCollection; }
         }
 

@@ -150,20 +150,11 @@
     <Compile Include="Learn\RestClient.cs" />
     <Compile Include="IocLocator.cs" />
     <Compile Include="StringHelper.cs" />
-    <Compile Include="Learn\TFour1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TFour.tt</DependentUpon>
-    </Compile>
     <Compile Include="UserInterface\Web\UrlBuild.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Learn\TFour.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TFour1.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
