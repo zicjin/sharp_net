@@ -6,64 +6,64 @@ using zic_dotnet.Specifications;
 
 namespace zic_dotnet.Repositories {
 
-    public interface IRepository<TAggregateRoot, TKey> where TAggregateRoot : class, IAggregateRoot<TKey> {
+    public interface IRepository<T> where T : class, IAggregateRoot {
 
-        IRepositoryContext<TKey> Context { get; }
+        IRepositoryContext Context { get; }
 
-        void Add(TAggregateRoot aggregateRoot);
-        void Remove(TAggregateRoot aggregateRoot);
-        void Update(TAggregateRoot aggregateRoot);
-        bool Exists(ISpecification<TAggregateRoot> specification);
-        TAggregateRoot GetByKey(params object[] keyValues);
+        void Add(T aggregateRoot);
+        void Remove(T aggregateRoot);
+        void Update(T aggregateRoot);
+        bool Exists(ISpecification<T> specification);
+        T GetByKey(params object[] keyValues);
 
-        TAggregateRoot Find(ISpecification<TAggregateRoot> specification);
-        IEnumerable<TAggregateRoot> FindAll();
-        IEnumerable<TAggregateRoot> FindAll(ISpecification<TAggregateRoot> specification);
-        IEnumerable<TAggregateRoot> FindAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder);
-        IEnumerable<TAggregateRoot> FindAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder);
+        T Find(ISpecification<T> specification);
+        IEnumerable<T> FindAll();
+        IEnumerable<T> FindAll(ISpecification<T> specification);
+        IEnumerable<T> FindAll(Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder);
+        IEnumerable<T> FindAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder);
 
         #region page
-        IEnumerable<TAggregateRoot> FindAll(int pageNumber, int pageSize);
-        IEnumerable<TAggregateRoot> FindAll(ISpecification<TAggregateRoot> specification, int pageNumber, int pageSize);
-        IEnumerable<TAggregateRoot> FindAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize);
-        IEnumerable<TAggregateRoot> FindAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize);
+        IEnumerable<T> FindAll(int pageNumber, int pageSize);
+        IEnumerable<T> FindAll(ISpecification<T> specification, int pageNumber, int pageSize);
+        IEnumerable<T> FindAll(Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize);
+        IEnumerable<T> FindAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize);
         #endregion
 
         #region eagerLoadingProperties
-        TAggregateRoot Find(ISpecification<TAggregateRoot> specification, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
+        T Find(ISpecification<T> specification, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
 
-        IEnumerable<TAggregateRoot> FindAll(params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> FindAll(int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> FindAll(params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> FindAll(int pageNumber, int pageSize, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
 
-        IEnumerable<TAggregateRoot> FindAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> FindAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> FindAll(Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> FindAll(Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
 
-        IEnumerable<TAggregateRoot> FindAll(ISpecification<TAggregateRoot> specification, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> FindAll(ISpecification<TAggregateRoot> specification, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> FindAll(ISpecification<T> specification, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> FindAll(ISpecification<T> specification, int pageNumber, int pageSize, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
 
-        IEnumerable<TAggregateRoot> FindAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> FindAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> FindAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> FindAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
         #endregion
 
         #region Get
-        TAggregateRoot Get(ISpecification<TAggregateRoot> specification);
-        IEnumerable<TAggregateRoot> GetAll();
-        IEnumerable<TAggregateRoot> GetAll(int pageNumber, int pageSize);
-        IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification);
-        IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, int pageNumber, int pageSize);
-        IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder);
-        IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize);
-        IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder);
-        IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize);
-        TAggregateRoot Get(ISpecification<TAggregateRoot> specification, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> GetAll(params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> GetAll(int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
-        IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
+        T Get(ISpecification<T> specification);
+        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(int pageNumber, int pageSize);
+        IEnumerable<T> GetAll(ISpecification<T> specification);
+        IEnumerable<T> GetAll(ISpecification<T> specification, int pageNumber, int pageSize);
+        IEnumerable<T> GetAll(Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder);
+        IEnumerable<T> GetAll(Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize);
+        IEnumerable<T> GetAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder);
+        IEnumerable<T> GetAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize);
+        T Get(ISpecification<T> specification, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> GetAll(params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> GetAll(int pageNumber, int pageSize, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> GetAll(ISpecification<T> specification, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> GetAll(ISpecification<T> specification, int pageNumber, int pageSize, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> GetAll(Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> GetAll(Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> GetAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
+        IEnumerable<T> GetAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<T, dynamic>>[] eagerLoadingProperties);
         #endregion
     }
 }

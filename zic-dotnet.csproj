@@ -103,7 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachData.cs" />
-    <Compile Include="Domain\IDomainEvent.cs" />
+    <Compile Include="Repositories\IAggregateRoot.cs" />
+    <Compile Include="Repositories\IDomainEvent.cs" />
     <Compile Include="DynamicMethodExecutor.cs" />
     <Compile Include="FastEval.cs" />
     <Compile Include="Image.cs" />
@@ -114,7 +115,6 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryContext.cs" />
     <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\RepositoryContext.cs" />
     <Compile Include="Repositories\SortOrder.cs" />
     <Compile Include="Specifications\Composite\AndNotSpecification.cs" />
     <Compile Include="Specifications\Composite\AndSpecification.cs" />
@@ -131,9 +131,7 @@
     <Compile Include="UserInterface\Web\FormsAuthenticationWithAuths.cs" />
     <Compile Include="UserInterface\Web\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />
-    <Compile Include="Domain\DomainException.cs" />
-    <Compile Include="Domain\IAggregateRoot.cs" />
-    <Compile Include="Domain\IEntity.cs" />
+    <Compile Include="Repositories\DomainException.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="Obsolete\EnumDescription.cs" />
     <Compile Include="EnumHelp.cs" />

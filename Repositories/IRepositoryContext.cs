@@ -3,16 +3,16 @@ using zic_dotnet.Domain;
 
 namespace zic_dotnet.Repositories {
 
-    public interface IRepositoryContext<TKey> : IUnitOfWork, IDisposable {
+    public interface IRepositoryContext : IUnitOfWork, IDisposable {
 
         Guid ID { get; }
 
-        void RegisterNew<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot<TKey>;
+        void RegisterNew<T>(T obj) where T : class, IAggregateRoot;
 
-        void RegisterModified<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot<TKey>;
+        void RegisterModified<T>(T obj) where T : class, IAggregateRoot;
 
-        void RegisterDeleted<TAggregateRoot>(TAggregateRoot obj) where TAggregateRoot : class, IAggregateRoot<TKey>;
+        void RegisterDeleted<T>(T obj) where T : class, IAggregateRoot;
 
-        IRepository<TAggregateRoot, TKey> GetRepository<TAggregateRoot>() where TAggregateRoot : class, IAggregateRoot<TKey>;
+        IRepository<T> GetRepository<T>() where T : class, IAggregateRoot;
     }
 }
