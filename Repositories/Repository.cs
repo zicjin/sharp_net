@@ -47,7 +47,7 @@ namespace zic_dotnet.Repositories {
         public T GetByKey(params object[] keyValues) {
             return this.DoGetByKey(keyValues);
         }
-         
+
         //Find
         public T Find(ISpecification<T> specification) {
             return this.DoFind(specification);
