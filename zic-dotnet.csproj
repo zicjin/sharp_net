@@ -106,13 +106,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachData.cs" />
+    <Compile Include="BarCodeToHTML.cs" />
+    <Compile Include="CNSpellTranslator.cs" />
+    <Compile Include="CreatePdf.cs" />
+    <Compile Include="DataTableConvert.cs" />
     <Compile Include="DtExtend.cs" />
+    <Compile Include="FileHelper.cs" />
+    <Compile Include="Repositories\eAct.cs" />
     <Compile Include="Repositories\IAggregateRoot.cs" />
     <Compile Include="Repositories\IDomainEvent.cs" />
     <Compile Include="DynamicMethodExecutor.cs" />
     <Compile Include="FastEval.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="RandomPassword.cs" />
+    <Compile Include="Repositories\DomainInt.cs" />
+    <Compile Include="Repositories\DomainGuid.cs" />
     <Compile Include="Specifications\Other\ExpressionFuncExtender.cs" />
     <Compile Include="UnitTest.cs" />
     <Compile Include="ZicLog4Net.cs" />
