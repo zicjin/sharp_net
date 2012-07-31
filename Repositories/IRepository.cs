@@ -14,7 +14,7 @@ namespace zic_dotnet.Repositories {
         void Remove(T aggregateRoot);
         void Update(T aggregateRoot);
         bool Exists(ISpecification<T> specification);
-        T GetByKey(params object[] keyValues);
+        T GetById(params object[] keyValues);
 
         T Find(ISpecification<T> specification);
         IEnumerable<T> FindAll();

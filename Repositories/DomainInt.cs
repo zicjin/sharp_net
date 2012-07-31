@@ -18,14 +18,11 @@ namespace zic_dotnet.Repositories {
             CreatTime = DateTime.Now;
             ActEnum = (int)eAct.Normal;
         }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
     }
 
     public abstract class DomainIntData {
-        public string ID { get; set; }
+        public int ID { get; set; }
         public int ActEnum { get; set; }
         public DateTime CreatTime { get; set; }
-        public Byte[] Timestamp { get; set; }
     }
 }

@@ -44,7 +44,7 @@ namespace zic_dotnet.Repositories {
         public void Update(T aggregateRoot) {
             this.DoUpdate(aggregateRoot);
         }
-        public T GetByKey(params object[] keyValues) {
+        public T GetById(params object[] keyValues) {
             return this.DoGetByKey(keyValues);
         }
 
