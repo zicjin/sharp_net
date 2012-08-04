@@ -12,6 +12,7 @@ namespace zic_dotnet.Repositories {
         public int ActEnum { get; set; }
         public eAct Act {
             get { return (eAct)ActEnum; }
+            set { ActEnum = (int)value; }
         }
         public DateTime CreatTime { get; set; }
         public virtual void Creat() {

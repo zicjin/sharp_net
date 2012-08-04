@@ -12,12 +12,13 @@ namespace zic_dotnet.Repositories {
         public int ActEnum { get; set; }
         public eAct Act {
             get { return (eAct)ActEnum; }
+            set { ActEnum = (int)value; }
         }
         public DateTime CreatTime { get; set; }
         public virtual void Creat() {
             ID = Guid.NewGuid();
             CreatTime = DateTime.Now;
-            ActEnum = (int)eAct.Normal;
+            Act = eAct.Normal;
         }
         [Timestamp]
         public Byte[] Timestamp { get; set; }
