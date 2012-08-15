@@ -80,6 +80,12 @@
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>packages\Mvc3Futures.3.0.20105.0\lib\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.5\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.5\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.14\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -128,6 +134,10 @@
     <Compile Include="RandomPassword.cs" />
     <Compile Include="Repositories\DomainInt.cs" />
     <Compile Include="Repositories\DomainGuid.cs" />
+    <Compile Include="Repositories\MongoDB\GuidIDGeneratorConvention.cs" />
+    <Compile Include="Repositories\MongoDB\IMongoDBRepositoryContext.cs" />
+    <Compile Include="Repositories\MongoDB\IMongoDBRepositoryContextSettings.cs" />
+    <Compile Include="Repositories\MongoDB\UseLocalDateTimeConvention.cs" />
     <Compile Include="Specifications\Other\ExpressionFuncExtender.cs" />
     <Compile Include="UnitTest.cs" />
     <Compile Include="ZicLog4Net.cs" />

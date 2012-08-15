@@ -17,7 +17,7 @@ namespace zic_dotnet.Repositories {
         protected abstract bool DoExists(ISpecification<T> specification);
         protected abstract void DoRemove(T aggregateRoot);
         protected abstract void DoUpdate(T aggregateRoot);
-        protected abstract T DoGetByKey(params object[] keyValues);
+        protected abstract T DoGetByKey(params object[] keys);
 
         protected abstract T DoFind(ISpecification<T> specification);
         protected abstract IEnumerable<T> DoFindAll(ISpecification<T> specification, Expression<Func<T, dynamic>> sortPredicate, SortOrder sortOrder);
