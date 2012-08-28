@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace zic_dotnet.Repositories {
+
+    [SerializableAttribute()]
     public abstract class DomainGuid {
         [Key]
         public Guid ID { get; set; }
@@ -24,6 +26,7 @@ namespace zic_dotnet.Repositories {
         public Byte[] Timestamp { get; set; }
     }
 
+    [SerializableAttribute()]
     public abstract class DomainGuidData {
         public string ID { get; set; }
         public int ActEnum { get; set; }

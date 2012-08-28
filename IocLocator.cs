@@ -77,8 +77,5 @@ namespace zic_dotnet {
             return Container.Resolve(serviceType, name, overrides.ToArray());
         }
 
-        public object GetService(Type serviceType) {
-            return GetImple(serviceType);
-        }
     }
 }
