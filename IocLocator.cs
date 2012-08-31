@@ -9,7 +9,7 @@ namespace zic_dotnet {
     /// <summary>
     /// Represents the Service Locator.
     /// </summary>
-    public sealed class IocLocator : IServiceProvider {
+    public sealed class IocLocator {
 
         private IocLocator() {
             //UnityConfigurationSection section = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
