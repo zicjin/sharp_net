@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace zic_dotnet.Repositories {
             get { return (eAct)ActEnum; }
             set { ActEnum = (int)value; }
         }
+
         public DateTime CreatTime { get; set; }
         public virtual void Creat() {
             CreatTime = DateTime.Now;
