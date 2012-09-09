@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web.UI;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     internal static class ExpendWinform {
 

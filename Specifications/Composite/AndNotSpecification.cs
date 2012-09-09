@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace zic_dotnet.Specifications {
+namespace sharp_net.Specifications {
 
 
     public class AndNotSpecification<T> : CompositeSpecification<T> {

@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public static class RestClient {
 

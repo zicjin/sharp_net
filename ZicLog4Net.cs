@@ -13,7 +13,7 @@ using log4net.Filter;
 using log4net.Layout;
 using log4net.Repository;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public sealed class ZicLog4Net {
         private static PatternLayout ZicLayout = new PatternLayout(Environment.NewLine + "时间：%date 线程ID：[%thread] 级别：%-5level 触发源：%logger property:[%property{NDC}] - " + Environment.NewLine + "Message：%message%newline");

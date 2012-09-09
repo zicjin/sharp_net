@@ -5,7 +5,7 @@ using System.Text;
 using System.Reflection;
 using System.Linq.Expressions;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     //http://blog.zhaojie.me/2008/11/invoke-method-by-lambda-expression.html
     //方法的直接调用，反射调用与……Lambda表达式调用

@@ -1,4 +1,4 @@
-﻿namespace zic_dotnet.Repositories {
+﻿namespace sharp_net.Repositories {
 
     public enum SortOrder {
         Unspecified = -1,

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 
-namespace zic_dotnet.Repositories.MongoDB {
+namespace sharp_net.Repositories.MongoDB {
     public interface IMongoDBRepositoryContext : IRepositoryContext {
         /// <summary>
         /// Gets a <see cref="IMongoDBRepositoryContextSettings"/> instance which contains the settings

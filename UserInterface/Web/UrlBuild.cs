@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public static class UrlBuild {
 

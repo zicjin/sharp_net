@@ -8,7 +8,7 @@
     <ProjectGuid>{3251CF20-191C-4F54-B070-9C342227E358}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>zic_dotnet</RootNamespace>
+    <RootNamespace>sharp_net</RootNamespace>
     <AssemblyName>zic-dotnet</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

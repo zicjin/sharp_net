@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     internal static class ExpendObj {
 

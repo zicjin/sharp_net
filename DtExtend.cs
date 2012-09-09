@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace zic_dotnet {
+namespace sharp_net {
     public static class DtExpend {
 
         // 处理 Date(1245398693390)/

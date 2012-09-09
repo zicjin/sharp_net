@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public static class Enumhelp {
 

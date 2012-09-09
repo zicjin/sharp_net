@@ -7,7 +7,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 
-namespace zic_dotnet {
+namespace sharp_net {
     public class ImageUnit {
         public static byte[] ResizeImageFile(byte[] imageFile, int targetSize) {
             using (Image oldImage = Image.FromStream(new MemoryStream(imageFile))) {

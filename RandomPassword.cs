@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace zic_dotnet {
+namespace sharp_net {
     //Reference http://www.consultsarath.com/contents/articles/KB000011-snippet-generate-random-strong-password-string-using-cSharp.aspx
     public static class RandomPassword {
 

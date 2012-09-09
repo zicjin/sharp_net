@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace zic_dotnet.Specifications {
+namespace sharp_net.Specifications {
     /// <summary>
     /// Represents the extender for Expression[Func[T, bool]] type.
     /// This is part of the solution which solves

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace zic_dotnet.Specifications {
+namespace sharp_net.Specifications {
 
     /// <summary>
     /// Represents the parameter rebinder used for rebinding the parameters

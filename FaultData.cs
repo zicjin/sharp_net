@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     /// <summary>
     /// Represents the data to be transferred through the

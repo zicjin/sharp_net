@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace zic_dotnet.Specifications {
+namespace sharp_net.Specifications {
 
 
     public class AndSpecification<T> : CompositeSpecification<T> {

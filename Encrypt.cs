@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public static class Encrypt {
 

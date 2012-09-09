@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace zic_dotnet.Repositories {
+namespace sharp_net.Repositories {
     public abstract class DomainInt {
         [Key]
         public int ID { get; set; }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace zic_dotnet {
+namespace sharp_net {
     public enum AgeRange {
         [AttachData(DescripByLang.Chinese, "18岁及以下")]
         [AttachData(DescripByLang.English, "18 years old or less")]

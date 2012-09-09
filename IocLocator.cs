@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Practices.Unity;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     /// <summary>
     /// Represents the Service Locator.

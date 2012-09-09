@@ -3,7 +3,7 @@ using System.Collections;
 using System.Reflection;
 
 //建议改用AttachData
-namespace zic_dotnet.Obsolete {
+namespace sharp_net.Obsolete {
 
     /// <summary>
     /// 把枚举值按照指定的文本显示

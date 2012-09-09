@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace zic_dotnet.Repositories {
+namespace sharp_net.Repositories {
 
     /// <summary>
     /// Represents the error which occurs in the execution of the domain logic.

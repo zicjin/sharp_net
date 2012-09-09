@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using zic_dotnet.Domain;
-using zic_dotnet.Specifications;
+using sharp_net.Domain;
+using sharp_net.Specifications;
 
-namespace zic_dotnet.Repositories {
+namespace sharp_net.Repositories {
 
     public abstract class Repository<T> : IRepository<T> where T : class, IAggregateRoot {
         private readonly IRepositoryContext context;

@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.Options;
 
-namespace zic_dotnet.Repositories.MongoDB {
+namespace sharp_net.Repositories.MongoDB {
     /// <summary>
     /// Represents the Bson serialization convention that serializes the <see cref="System.DateTime"/> value
     /// by using the local date/time kind.

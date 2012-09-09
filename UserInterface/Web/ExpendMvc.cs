@@ -7,7 +7,7 @@ using System.Web.Mvc.Html;
 using System.Web.Routing;
 using Microsoft.Web.Mvc;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public static class ExpendMvc {
 

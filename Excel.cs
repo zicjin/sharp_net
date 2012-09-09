@@ -5,7 +5,7 @@ using System.Data.OleDb;
 using System.IO;
 using System.Text;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     /// <summary>
     /// 描述：對Excel文件的創建表、讀取、寫入數據操作.

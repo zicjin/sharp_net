@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 
-namespace zic_dotnet.Repositories.MongoDB {
+namespace sharp_net.Repositories.MongoDB {
     /// <summary>
     /// Represents the methods that maps a given <see cref="Type"/> object to
     /// the name of the <see cref="MongoDB.Driver.MongoCollection"/>.

@@ -1,4 +1,4 @@
-﻿namespace zic_dotnet.Repositories {
+﻿namespace sharp_net.Repositories {
 
     public enum eAct {
         Normal = 1,

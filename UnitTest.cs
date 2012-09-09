@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     //http://blog.zhaojie.me/2009/04/cannot-have-too-many-helper-methods.html
     //辅助方法不嫌多

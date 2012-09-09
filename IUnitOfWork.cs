@@ -1,4 +1,4 @@
-﻿namespace zic_dotnet.Domain {
+﻿namespace sharp_net.Domain {
 
     /// <summary>
     /// Represents the Unit Of Work.

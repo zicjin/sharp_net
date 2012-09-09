@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace zic_dotnet.Repositories {
+namespace sharp_net.Repositories {
 
     /// <summary>
     /// Represents that the implemented classes are domain events.

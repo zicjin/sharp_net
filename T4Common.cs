@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace zic_dotnet {
+namespace sharp_net {
     public static class T4Common {
         public static string GetMethodReturnType(MethodInfo method) {
             Type type = method.ReturnType;

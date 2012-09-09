@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public static class StringHelper {
 

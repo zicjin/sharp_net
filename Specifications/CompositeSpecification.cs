@@ -1,4 +1,4 @@
-﻿namespace zic_dotnet.Specifications {
+﻿namespace sharp_net.Specifications {
 
     public interface ICompositeSpecification<T> : ISpecification<T> {
 

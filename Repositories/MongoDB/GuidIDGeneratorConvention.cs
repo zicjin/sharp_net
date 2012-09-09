@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.IdGenerators;
 
-namespace zic_dotnet.Repositories.MongoDB {
+namespace sharp_net.Repositories.MongoDB {
     public class GuidIDGeneratorConvention : IIdGeneratorConvention {
         #region IIdGeneratorConvention Members
         /// <summary>

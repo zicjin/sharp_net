@@ -2,7 +2,7 @@
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public class JsonHelper {
 

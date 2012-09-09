@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace zic_dotnet.Specifications {
+namespace sharp_net.Specifications {
 
     /// <summary>
     /// Represents that the implemented classes are specifications. For more

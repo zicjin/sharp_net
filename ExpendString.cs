@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace zic_dotnet {
+namespace sharp_net {
 
     public static class ExpendString {
 

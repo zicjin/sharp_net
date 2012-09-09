@@ -1,7 +1,7 @@
 ﻿using System;
-using zic_dotnet.Domain;
+using sharp_net.Domain;
 
-namespace zic_dotnet.Repositories {
+namespace sharp_net.Repositories {
 
     public interface IRepositoryContext : IUnitOfWork, IDisposable {
 

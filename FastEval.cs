@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Linq.Expressions;
 using System.Web.UI;
 
-namespace zic_dotnet {
+namespace sharp_net {
     //http://blog.zhaojie.me/2009/01/dynamicpropertyaccessor-and-fasteval.html
     public static class FastEvalExtensions {
         private static DynamicPropertyAccessorCache s_cache = new DynamicPropertyAccessorCache();
