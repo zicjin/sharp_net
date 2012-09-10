@@ -132,10 +132,14 @@
     <Compile Include="RandomPassword.cs" />
     <Compile Include="Repositories\DomainInt.cs" />
     <Compile Include="Repositories\DomainGuid.cs" />
+    <Compile Include="Repositories\MongoDB\DomainMongo.cs" />
     <Compile Include="Repositories\MongoDB\GuidIDGeneratorConvention.cs" />
     <Compile Include="Repositories\MongoDB\IMongoDBRepositoryContext.cs" />
-    <Compile Include="Repositories\MongoDB\IMongoDBRepositoryContextSettings.cs" />
+    <Compile Include="Repositories\MongoDB\MongoDBRepository.cs" />
+    <Compile Include="Repositories\MongoDB\MongoDBRepositoryContext.cs" />
+    <Compile Include="Repositories\MongoDB\IMongoDBSettings.cs" />
     <Compile Include="Repositories\MongoDB\UseLocalDateTimeConvention.cs" />
+    <Compile Include="Repositories\eDbType.cs" />
     <Compile Include="Specifications\Other\ExpressionFuncExtender.cs" />
     <Compile Include="T4Common.cs" />
     <Compile Include="UnitTest.cs" />

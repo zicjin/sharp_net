@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 
-namespace sharp_net.Repositories {
-    public abstract class DomainInt {
+namespace sharp_net.Repositories.MongoDB {
+    public abstract class DomainMongo {
         [Key]
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
         public int ActEnum { get; set; }
         public eAct Act {
             get { return (eAct)ActEnum; }
@@ -24,7 +25,7 @@ namespace sharp_net.Repositories {
     }
 
     public abstract class DomainIntData {
-        public int ID { get; set; }
+        public string _id { get; set; }
         public int ActEnum { get; set; }
         public DateTime CreatTime { get; set; }
     }

@@ -11,7 +11,7 @@ namespace sharp_net.Repositories {
     [SerializableAttribute()]
     public abstract class DomainGuid {
         [Key]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         public int ActEnum { get; set; }
         public eAct Act {
             get { return (eAct)ActEnum; }
@@ -20,7 +20,7 @@ namespace sharp_net.Repositories {
 
         public DateTime CreatTime { get; set; }
         public virtual void Creat() {
-            ID = Guid.NewGuid();
+            Id = Guid.NewGuid();
             CreatTime = DateTime.Now;
             Act = eAct.Normal;
         }

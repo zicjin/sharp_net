@@ -8,10 +8,10 @@ using MongoDB.Driver;
 namespace sharp_net.Repositories.MongoDB {
     public interface IMongoDBRepositoryContext : IRepositoryContext {
         /// <summary>
-        /// Gets a <see cref="IMongoDBRepositoryContextSettings"/> instance which contains the settings
+        /// Gets a <see cref="IMongoDBSettings"/> instance which contains the settings
         /// information used by current context.
         /// </summary>
-        IMongoDBRepositoryContextSettings Settings { get; }
+        IMongoDBSettings Settings { get; }
         /// <summary>
         /// Gets the <see cref="MongoCollection"/> instance by the given <see cref="Type"/>.
         /// </summary>

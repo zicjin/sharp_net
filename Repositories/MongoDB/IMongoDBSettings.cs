@@ -17,7 +17,7 @@ namespace sharp_net.Repositories.MongoDB {
     /// <summary>
     /// Represents that the implemented classes are MongoDB repository context settings.
     /// </summary>
-    public interface IMongoDBRepositoryContextSettings {
+    public interface IMongoDBSettings {
         /// <summary>
         /// Gets the instance of <see cref="MongoServerSettings"/> class which represents the
         /// settings for MongoDB server.
