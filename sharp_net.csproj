@@ -103,6 +103,7 @@
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -123,6 +124,7 @@
     <Compile Include="DataTableConvert.cs" />
     <Compile Include="DtExtend.cs" />
     <Compile Include="FileHelper.cs" />
+    <Compile Include="Repositories\DomainEvent.cs" />
     <Compile Include="Repositories\eAct.cs" />
     <Compile Include="Repositories\IAggregateRoot.cs" />
     <Compile Include="Repositories\IDomainEvent.cs" />
@@ -138,11 +140,14 @@
     <Compile Include="Repositories\MongoDB\MongoDBRepository.cs" />
     <Compile Include="Repositories\MongoDB\MongoDBRepositoryContext.cs" />
     <Compile Include="Repositories\MongoDB\IMongoDBSettings.cs" />
+    <Compile Include="Repositories\MongoDB\MongoSortExpressionHelper.cs" />
     <Compile Include="Repositories\MongoDB\UseLocalDateTimeConvention.cs" />
     <Compile Include="Repositories\eDbType.cs" />
+    <Compile Include="Repositories\RepoUtils.cs" />
     <Compile Include="Specifications\Other\ExpressionFuncExtender.cs" />
     <Compile Include="T4Common.cs" />
     <Compile Include="UnitTest.cs" />
+    <Compile Include="UserInterface\Web\ApiModel.cs" />
     <Compile Include="ZicLog4Net.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryContext.cs" />

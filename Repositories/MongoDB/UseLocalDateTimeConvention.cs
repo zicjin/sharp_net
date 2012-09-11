@@ -10,12 +10,7 @@ namespace sharp_net.Repositories.MongoDB {
     /// by using the local date/time kind.
     /// </summary>
     public class UseLocalDateTimeConvention : ISerializationOptionsConvention {
-        #region ISerializationOptionsConvention Members
-        /// <summary>
-        /// Gets the BSON serialization options for a member.
-        /// </summary>
-        /// <param name="memberInfo">The member.</param>
-        /// <returns>The BSON serialization options for the member; or null to use defaults.</returns>
+
         public virtual IBsonSerializationOptions GetSerializationOptions(MemberInfo memberInfo) {
             switch (memberInfo.MemberType) {
                 case MemberTypes.Property:
@@ -36,6 +31,5 @@ namespace sharp_net.Repositories.MongoDB {
             return null;
         }
 
-        #endregion
     }
 }

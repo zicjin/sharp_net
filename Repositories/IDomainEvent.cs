@@ -8,13 +8,22 @@ namespace sharp_net.Repositories {
     public interface IDomainEvent {
 
         /// <summary>
-        /// Gets the ID of the domain event.
+        /// Gets or sets the assembly qualified name of the type of the aggregate root.
         /// </summary>
-        Guid ID { get; }
-
+        string AssemblyQualifiedSourceType { get; set; }
         /// <summary>
-        /// Gets the date and time on which the domain event was created.
+        /// Gets or sets the identifier of the aggregate root.
         /// </summary>
-        DateTime TimeStamp { get; }
+        string SourceID { get; set; }
+        /// <summary>
+        /// Gets or sets the version of the domain event.
+        /// </summary>
+        long Version { get; set; }
+        /// <summary>
+        /// Gets or sets the branch on which the current domain event exists.
+        /// </summary>
+        long Branch { get; set; }
+
+        DateTime Timestamp { get; set; }
     }
 }

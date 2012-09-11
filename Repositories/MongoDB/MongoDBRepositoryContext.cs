@@ -27,8 +27,8 @@ namespace sharp_net.Repositories.MongoDB {
         private readonly ThreadLocal<List<object>> localDeletedCollection = new ThreadLocal<List<object>>(() => new List<object>());
         private readonly ThreadLocal<bool> localCommitted = new ThreadLocal<bool>(() => true);
 
-        public MongoDBRepositoryContext(string key) {
-            this.settings = IocLocator.Instance.GetImple<IMongoDBSettings>(key);
+        public MongoDBRepositoryContext(string settingkey) {
+            this.settings = IocLocator.Instance.GetImple<IMongoDBSettings>(settingkey);
             server = new MongoServer(settings.ServerSettings);
             database = server.GetDatabase(settings.GetDatabaseSettings(server));
         }
@@ -53,7 +53,7 @@ namespace sharp_net.Repositories.MongoDB {
 
         public static void RegisterConventions(bool autoGenerateID, bool localDateTime, ConventionProfile additionConventions) {
             var convention = new ConventionProfile();
-            convention.SetIdMemberConvention(new NamedIdMemberConvention("id", "Id", "ID", "iD"));
+            convention.SetIdMemberConvention(new NamedIdMemberConvention("id", "Id", "ID"));
 
             if (autoGenerateID)
                 convention.SetIdGeneratorConvention(new GuidIDGeneratorConvention());

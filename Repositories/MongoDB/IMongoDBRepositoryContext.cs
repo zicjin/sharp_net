@@ -15,8 +15,6 @@ namespace sharp_net.Repositories.MongoDB {
         /// <summary>
         /// Gets the <see cref="MongoCollection"/> instance by the given <see cref="Type"/>.
         /// </summary>
-        /// <param name="type">The <see cref="Type"/> object.</param>
-        /// <returns>The <see cref="MongoCollection"/> instance.</returns>
         MongoCollection GetCollectionForType(Type type);
     }
 }
