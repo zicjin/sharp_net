@@ -90,12 +90,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\mongocsharpdriver.1.6\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.ServiceModel" />
@@ -124,6 +129,15 @@
     <Compile Include="DataTableConvert.cs" />
     <Compile Include="DtExtend.cs" />
     <Compile Include="FileHelper.cs" />
+    <Compile Include="Mvc\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Mvc\HelpPage\HelpPageSampleGenerator.cs" />
+    <Compile Include="Mvc\HelpPage\HelpPageSampleKey.cs" />
+    <Compile Include="Mvc\HelpPage\ImageSample.cs" />
+    <Compile Include="Mvc\HelpPage\InvalidSample.cs" />
+    <Compile Include="Mvc\HelpPage\ObjectGenerator.cs" />
+    <Compile Include="Mvc\HelpPage\SampleDirection.cs" />
+    <Compile Include="Mvc\HelpPage\TextSample.cs" />
+    <Compile Include="Mvc\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Repositories\DomainEvent.cs" />
     <Compile Include="Repositories\eAct.cs" />
     <Compile Include="Repositories\IAggregateRoot.cs" />
@@ -147,7 +161,8 @@
     <Compile Include="Specifications\Other\ExpressionFuncExtender.cs" />
     <Compile Include="T4Common.cs" />
     <Compile Include="UnitTest.cs" />
-    <Compile Include="UserInterface\Web\ApiModel.cs" />
+    <Compile Include="Mvc\HelpPage\HelpPageApiModel.cs" />
+    <Compile Include="Mvc\HelpPage\HelpPageConfigurationExtensions.cs" />
     <Compile Include="ZicLog4Net.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryContext.cs" />
@@ -165,8 +180,8 @@
     <Compile Include="Specifications\Other\ParameterRebinder.cs" />
     <Compile Include="Specifications\Specification.cs" />
     <Compile Include="FaultData.cs" />
-    <Compile Include="UserInterface\Web\FormsAuthenticationWithAuths.cs" />
-    <Compile Include="UserInterface\Web\CompressResponseAttribute.cs" />
+    <Compile Include="Mvc\FormsAuthenticationWithAuths.cs" />
+    <Compile Include="Mvc\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="Repositories\DomainException.cs" />
     <Compile Include="Encrypt.cs" />
@@ -174,17 +189,17 @@
     <Compile Include="EnumHelp.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="ExpendLinq.cs" />
-    <Compile Include="UserInterface\Web\ExpendMvc.cs" />
+    <Compile Include="Mvc\ExpendMvc.cs" />
     <Compile Include="ExpendObj.cs" />
     <Compile Include="ExpendString.cs" />
-    <Compile Include="UserInterface\Winform\ExpendWinform.cs" />
+    <Compile Include="Winform\ExpendWinform.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Learn\RestClient.cs" />
     <Compile Include="IocLocator.cs" />
     <Compile Include="StringHelper.cs" />
-    <Compile Include="UserInterface\Web\UrlBuild.cs" />
+    <Compile Include="Mvc\UrlBuild.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
