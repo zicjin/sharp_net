@@ -3,7 +3,7 @@ using System.IO.Compression;
 using System.Web;
 using System.Web.Mvc;
 
-namespace sharp_net {
+namespace sharp_net.Mvc {
 
     public class CompressResponseAttribute : ActionFilterAttribute {
 

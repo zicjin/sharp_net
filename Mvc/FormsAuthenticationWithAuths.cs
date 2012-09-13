@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Xml.Serialization;
 
-namespace sharp_net {
+namespace sharp_net.Mvc {
 
     //扩展，得到支持Roles与Auths的IFormsAuthentication
     [Serializable]
