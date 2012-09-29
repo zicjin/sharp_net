@@ -24,8 +24,8 @@ namespace sharp_net.Repositories.MongoDB {
         }
     }
 
-    public abstract class DomainIntData {
-        public string _id { get; set; }
+    public abstract class DomainMongoData {
+        public string Id { get; set; }
         public int ActEnum { get; set; }
         public DateTime CreatTime { get; set; }
     }
