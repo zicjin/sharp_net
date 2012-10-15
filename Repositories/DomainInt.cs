@@ -21,6 +21,11 @@ namespace sharp_net.Repositories {
             CreatTime = DateTime.Now;
             ActEnum = (int)eAct.Normal;
         }
+
+        protected void Update(DomainIntData data) {
+            if (data.ActEnum != 0)
+                this.ActEnum = data.ActEnum;
+        }
     }
 
     public abstract class DomainIntData {

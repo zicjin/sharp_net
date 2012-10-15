@@ -22,6 +22,11 @@ namespace sharp_net.Repositories.MongoDB {
             CreatTime = DateTime.Now;
             ActEnum = (int)eAct.Normal;
         }
+
+        protected void Update(DomainMongoData data) {
+            if (data.ActEnum != 0)
+                this.ActEnum = data.ActEnum;
+        }
     }
 
     public abstract class DomainMongoData {
