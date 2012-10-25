@@ -171,6 +171,7 @@
     <Compile Include="Mvc\HelpPage\SampleDirection.cs" />
     <Compile Include="Mvc\HelpPage\TextSample.cs" />
     <Compile Include="Mvc\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Mvc\MyDependency.cs" />
     <Compile Include="Repositories\DomainEvent.cs" />
     <Compile Include="Repositories\eAct.cs" />
     <Compile Include="Repositories\IAggregateRoot.cs" />
