@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.ServiceLocation;
 
 namespace sharp_net {
     
     /// <summary>
     /// Represents the Service Locator.
     /// </summary>
-    public sealed class IocLocator {
+    public sealed class IocLocator: IServiceLocator {
 
         private IocLocator() {
             //使用Web.config配置：

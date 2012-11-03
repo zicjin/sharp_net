@@ -4,7 +4,7 @@ using System.Text;
 
 namespace sharp_net {
 
-    public class JsonHelper {
+    public class JsonHelp {
 
         /// <summary>
         /// JSON序列化

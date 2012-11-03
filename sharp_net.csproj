@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>sharp_net</RootNamespace>
-    <AssemblyName>zic-dotnet</AssemblyName>
+    <AssemblyName>sharp_net</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
@@ -155,13 +155,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttachData.cs" />
-    <Compile Include="BarCodeToHTML.cs" />
-    <Compile Include="CNSpellTranslator.cs" />
-    <Compile Include="CreatePdf.cs" />
-    <Compile Include="DataTableConvert.cs" />
-    <Compile Include="DtExtend.cs" />
-    <Compile Include="FileHelper.cs" />
+    <Compile Include="Infrastructure\AttachData.cs" />
+    <Compile Include="Function\BarCodeToHTML.cs" />
+    <Compile Include="Function\CNSpellTranslator.cs" />
+    <Compile Include="Function\CreatePdf.cs" />
+    <Compile Include="Infrastructure\DataTableConvert.cs" />
+    <Compile Include="Infrastructure\DateExtend.cs" />
+    <Compile Include="Function\FileHelper.cs" />
+    <Compile Include="Infrastructure\ExpendList.cs" />
     <Compile Include="Mvc\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Mvc\HelpPage\HelpPageSampleGenerator.cs" />
     <Compile Include="Mvc\HelpPage\HelpPageSampleKey.cs" />
@@ -172,14 +173,15 @@
     <Compile Include="Mvc\HelpPage\TextSample.cs" />
     <Compile Include="Mvc\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Mvc\MyDependency.cs" />
+    <Compile Include="Mvc\ScopeContainer.cs" />
     <Compile Include="Repositories\DomainEvent.cs" />
     <Compile Include="Repositories\eAct.cs" />
     <Compile Include="Repositories\IAggregateRoot.cs" />
     <Compile Include="Repositories\IDomainEvent.cs" />
-    <Compile Include="DynamicMethodExecutor.cs" />
-    <Compile Include="FastEval.cs" />
-    <Compile Include="Image.cs" />
-    <Compile Include="RandomPassword.cs" />
+    <Compile Include="Infrastructure\DynamicMethodExecutor.cs" />
+    <Compile Include="Winform\FastEval.cs" />
+    <Compile Include="Function\Image.cs" />
+    <Compile Include="Function\RandomPassword.cs" />
     <Compile Include="Repositories\DomainInt.cs" />
     <Compile Include="Repositories\DomainGuid.cs" />
     <Compile Include="Repositories\MongoDB\DomainMongo.cs" />
@@ -193,11 +195,11 @@
     <Compile Include="Repositories\eDbType.cs" />
     <Compile Include="Repositories\RepoUtils.cs" />
     <Compile Include="Specifications\Other\ExpressionFuncExtender.cs" />
-    <Compile Include="T4Common.cs" />
-    <Compile Include="UnitTest.cs" />
+    <Compile Include="Function\T4Common.cs" />
+    <Compile Include="Simple\UnitTest.cs" />
     <Compile Include="Mvc\HelpPage\HelpPageApiModel.cs" />
     <Compile Include="Mvc\HelpPage\HelpPageConfigurationExtensions.cs" />
-    <Compile Include="ZicLog4Net.cs" />
+    <Compile Include="Function\ZicLog4Net.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryContext.cs" />
     <Compile Include="Repositories\Repository.cs" />
@@ -218,21 +220,18 @@
     <Compile Include="Mvc\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="Repositories\DomainException.cs" />
-    <Compile Include="Encrypt.cs" />
-    <Compile Include="Obsolete\EnumDescription.cs" />
-    <Compile Include="EnumHelp.cs" />
-    <Compile Include="Excel.cs" />
-    <Compile Include="ExpendLinq.cs" />
+    <Compile Include="Function\Encrypt.cs" />
+    <Compile Include="Infrastructure\EnumHelp.cs" />
+    <Compile Include="Function\Excel.cs" />
+    <Compile Include="Infrastructure\ExpendLinq.cs" />
     <Compile Include="Mvc\ExpendMvc.cs" />
-    <Compile Include="ExpendObj.cs" />
-    <Compile Include="ExpendString.cs" />
+    <Compile Include="Infrastructure\ExpendObj.cs" />
+    <Compile Include="Infrastructure\ExpendString.cs" />
     <Compile Include="Winform\ExpendWinform.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="JsonHelper.cs" />
+    <Compile Include="Infrastructure\JsonHelp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Learn\RestClient.cs" />
     <Compile Include="IocLocator.cs" />
-    <Compile Include="StringHelper.cs" />
     <Compile Include="Mvc\UrlBuild.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Linq.Expressions;
+using System.Diagnostics;
 
 namespace sharp_net {
 
@@ -36,7 +37,6 @@ namespace sharp_net {
                     parametersParameter, Expression.Constant(i));
                 UnaryExpression valueCast = Expression.Convert(
                     valueObj, paramInfos[i].ParameterType);
-
                 parameterExpressions.Add(valueCast);
             }
 
@@ -69,5 +69,50 @@ namespace sharp_net {
                 return lambda.Compile();
             }
         }
+
     }
+
+    //Simple
+    class WatchDynamicMethod {
+        private void Watch() {
+            int times = 1000000;
+            Program program = new Program();
+            object[] parameters = new object[] { new object(), new object(), new object() };
+            program.Call(null, null, null); // force JIT-compile
+            MethodInfo methodInfo = typeof(Program).GetMethod("Call");
+
+            Stopwatch watch1 = new Stopwatch();
+            watch1.Start();
+            for (int i = 0; i < times; i++) {
+                program.Call(parameters[0], parameters[1], parameters[2]);
+            }
+            watch1.Stop();
+            Console.WriteLine(watch1.Elapsed + " (Directly invoke)");
+
+            Stopwatch watch2 = new Stopwatch();
+            watch2.Start();
+            for (int i = 0; i < times; i++) {
+                methodInfo.Invoke(program, parameters);
+            }
+            watch2.Stop();
+            Console.WriteLine(watch2.Elapsed + " (Reflection invoke)");
+
+            DynamicMethodExecutor executor = new DynamicMethodExecutor(methodInfo);
+            Stopwatch watch3 = new Stopwatch();
+            watch3.Start();
+            for (int i = 0; i < times; i++) {
+                executor.Execute(program, parameters);
+            }
+            watch3.Stop();
+            Console.WriteLine(watch3.Elapsed + " (Dynamic executor)");
+        }
+    }
+
+    class Program {
+        static void Main(string[] args) {
+
+        }
+        internal void Call(object one, object two, object three) { }
+    }
+
 }

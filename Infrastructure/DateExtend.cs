@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace sharp_net {
-    public static class DtExpend {
+    public static class DateExpend {
 
         // 处理 Date(1245398693390)/
         // 通常情况下，应该在Js端使用Json.js处理，更为流畅。http://goo.gl/VEff8。这里是为了正巧处理Highstock的特殊数据需求。
