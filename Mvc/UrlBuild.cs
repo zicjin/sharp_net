@@ -5,101 +5,69 @@ using System.Web.Mvc;
 
 namespace sharp_net {
 
+    public enum eControlDeploy {
+        IsDeploy = 0,
+        NoDeploy = 1,
+        ByConfig = 2
+    }
+
     public static class UrlBuild {
 
         static UrlBuild() {
-            ControlDeploy = eControlDeploy.ByDebug;
-            JsHead = "/js/";
-            JsHeadDeploy = "/js/__build/";
-            CssHead = "/css/";
-            CssHeadDeploy = "/css/__build/";
-            ImgHead = "/css/images/";
-            ImgHeadDeploy = "/css/images/";
-            //JsRepoFix = "zic-js";
-            //JsRepoDeployFix = "__build";
-            //CssRepoFix = "zic-css";
-            //CssRepoDeployFix = "__build";
-        }
-
-        public enum eControlDeploy {
-            IsDeploy = 0,
-            NoDeploy = 1,
-            ByDebug = 2
+            ControlDeploy = eControlDeploy.ByConfig;
+            Stamp = "121127";
+            StaticDeploy = "/__build";
+            ImgDeploy = "/images";
         }
 
         public static eControlDeploy ControlDeploy { get; set; }
 
-        public static string JsHead { get; set; }
+        public static string Stamp { get; set; }
 
-        public static string JsHeadDeploy { get; set; }
+        public static string StaticDeploy { get; set; }
 
-        public static string CssHead { get; set; }
-
-        public static string CssHeadDeploy { get; set; }
-
-        public static string ImgHead { get; set; }
-
-        public static string ImgHeadDeploy { get; set; }
-
-        public static string JsRepoFix { get; set; }
-
-        public static string JsRepoDeployFix { get; set; }
-
-        public static string CssRepoFix { get; set; }
-
-        public static string CssRepoDeployFix { get; set; }
+        public static string ImgDeploy { get; set; }
 
         public static bool IsDeploy() {
-            if (ControlDeploy == eControlDeploy.ByDebug)
+            if (ControlDeploy == eControlDeploy.ByConfig)
                 return !HttpContext.Current.IsDebuggingEnabled;
             else
                 return ControlDeploy == eControlDeploy.IsDeploy ? true : false;
         }
 
-        public static string ScriptUrl(string file) {
-            //if (!String.IsNullOrEmpty(JsRepoFix) && file.Contains(JsRepoFix) && IsDeploy())
-            //    return (JsHeadDeploy + file).Replace(JsRepoDeployFix + "/" + JsRepoFix, JsRepoFix + "/" + JsRepoDeployFix);
-            return (IsDeploy() ? JsHeadDeploy : JsHead) + file;
+        public static string StaticUrl(string file) {
+            StringBuilder Url = new StringBuilder();
+            return Url.AppendFormat("{0}{1}?{2}", (IsDeploy() ? StaticDeploy : String.Empty), file, Stamp).ToString();
         }
 
         public static string ScriptDoc(string file) {
             StringBuilder Path = new StringBuilder();
-            return Path.AppendFormat("<script type='text/javascript' src='{0}'></script>", ScriptUrl(file)).ToString();
-        }
-
-        public static IHtmlString ScriptUrl(this HtmlHelper helper, string file) {
-            return helper.Raw(ScriptUrl(file));
-        }
-
-        public static IHtmlString ScriptDoc(this HtmlHelper helper, string file) {
-            return helper.Raw(ScriptDoc(file));
-        }
-
-        public static string CssUrl(string file) {
-            //if (!String.IsNullOrEmpty(CssRepoFix) && file.Contains(CssRepoFix) && IsDeploy())
-            //    return (CssHeadDeploy + file).Replace(CssRepoDeployFix + "/" + CssRepoFix, CssRepoFix + "/" + CssRepoDeployFix);
-            return (IsDeploy() ? CssHeadDeploy : CssHead) + file;
+            return Path.AppendFormat("<script type='text/javascript' src='{0}'></script>", StaticUrl(file)).ToString();
         }
 
         public static string CssDoc(string file) {
             StringBuilder Path = new StringBuilder();
-            return Path.AppendFormat("<link rel='stylesheet' type='text/css' href='{0}' />", CssUrl(file)).ToString();
-        }
-
-        public static IHtmlString CssUrl(this HtmlHelper helper, string file) {
-            return helper.Raw(CssUrl(file));
-        }
-
-        public static IHtmlString CssDoc(this HtmlHelper helper, string file) {
-            return helper.Raw(CssDoc(file));
+            return Path.AppendFormat("<link rel='stylesheet' type='text/css' href='{0}' />", StaticUrl(file)).ToString();
         }
 
         public static string ImgUrl(string file) {
-            return (IsDeploy() ? ImgHeadDeploy : ImgHead) + file;
+            StringBuilder Url = new StringBuilder();
+            return Url.AppendFormat("{0}{1}?{2}", (IsDeploy() ? ImgDeploy : String.Empty), file, Stamp).ToString();
         }
 
+        #region Razor
+        public static IHtmlString StaticUrl(this HtmlHelper helper, string file) {
+            return helper.Raw(StaticUrl(file));
+        }
+        public static IHtmlString ScriptDoc(this HtmlHelper helper, string file) {
+            return helper.Raw(ScriptDoc(file));
+        }
+        public static IHtmlString CssDoc(this HtmlHelper helper, string file) {
+            return helper.Raw(CssDoc(file));
+        }
         public static IHtmlString ImgUrl(this HtmlHelper helper, string file) {
             return helper.Raw(ImgUrl(file));
         }
+        #endregion
     }
 }
