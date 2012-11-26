@@ -10,7 +10,7 @@ namespace sharp_net {
     /// <summary>
     /// Represents the Service Locator.
     /// </summary>
-    public sealed class IocLocator: IServiceLocator {
+    public sealed class IocLocator {
 
         private IocLocator() {
             //使用Web.config配置：
