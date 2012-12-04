@@ -22,25 +22,4 @@ namespace sharp_net.Mvc {
             RemoveValue();
         }
     }
-
-    public class MyDependencyResolver : IDependencyResolver {
-        private IUnityContainer container;
-        public MyDependencyResolver(IUnityContainer container) {
-            this.container = container;
-        }
-        public object GetService(Type serviceType) {
-            try {
-                return container.Resolve(serviceType);
-            } catch {
-                return null;
-            }
-        }
-        public IEnumerable<object> GetServices(Type serviceType) {
-            try {
-                return container.ResolveAll(serviceType);
-            } catch {
-                return new List<object>();
-            }
-        }
-    }
 }

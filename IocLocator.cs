@@ -4,13 +4,14 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.ServiceLocation;
+using System.Web.Mvc;
 
 namespace sharp_net {
     
     /// <summary>
     /// Represents the Service Locator.
     /// </summary>
-    public sealed class IocLocator {
+    public sealed class IocLocator : IDependencyResolver {
 
         private IocLocator() {
             //使用Web.config配置：
@@ -78,6 +79,23 @@ namespace sharp_net {
             var overrides = GetParameterOverrides(overridedArguments);
             return Container.Resolve(serviceType, name, overrides.ToArray());
         }
+
+        #region IDependencyResolver
+        public object GetService(Type serviceType) {
+            try {
+                return Container.Resolve(serviceType);
+            } catch {
+                return null;
+            }
+        }
+        public IEnumerable<object> GetServices(Type serviceType) {
+            try {
+                return Container.ResolveAll(serviceType);
+            } catch {
+                return new List<object>();
+            }
+        }
+        #endregion
 
     }
 }
