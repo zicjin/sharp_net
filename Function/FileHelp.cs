@@ -8,7 +8,7 @@ namespace yMatouFlow.Web.Commen {
     /// <summary>
     /// 打包压缩文件
     /// </summary>
-    public class FileHelper {
+    public class FileHelp {
         /// <summary>
         /// 压缩文件
         /// </summary>

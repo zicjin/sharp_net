@@ -5,11 +5,11 @@ using System.Text;
 using System.Data;
 using System.Reflection;
 
-namespace yMatouFlow.Unite {
+namespace sharp_net.Unite {
     /// <summary>
     /// IList类型与datatable类型的转换
     /// </summary>
-    public class uConvert {
+    public class TableConvert {
         public static DataTable ListToDataTable<T>(List<T> entitys) {
             if (entitys == null || entitys.Count < 1) return null;
 

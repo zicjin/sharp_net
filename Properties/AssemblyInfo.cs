@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("zic-dotnet")]
-[assembly: AssemblyDescription("zic-dotnet")]
+[assembly: AssemblyTitle("sharp_net")]
+[assembly: AssemblyDescription("sharp_net")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zicjin")]
-[assembly: AssemblyProduct("zic-dotnet")]
+[assembly: AssemblyProduct("sharp_net")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -8,7 +8,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 
 namespace sharp_net {
-    public class ImageUnit {
+    public class ImageHelp {
         public static byte[] ResizeImageFile(byte[] imageFile, int targetSize) {
             using (Image oldImage = Image.FromStream(new MemoryStream(imageFile))) {
                 Size newSize = CalculateDimensions(oldImage.Size, targetSize);

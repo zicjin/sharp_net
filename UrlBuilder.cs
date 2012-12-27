@@ -11,9 +11,9 @@ namespace sharp_net {
         ByConfig = 2
     }
 
-    public static class UrlBuild {
+    public static class UrlBuilder {
 
-        static UrlBuild() {
+        static UrlBuilder() {
             ControlDeploy = eControlDeploy.ByConfig;
             Stamp = "121127";
             StaticDeploy = "/__build";

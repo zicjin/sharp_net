@@ -48,8 +48,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\packages\iTextSharp.5.2.0\lib\itextsharp.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.3.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\iTextSharp.5.3.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
@@ -90,17 +91,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Mvc3Futures.3.0.20105.0\lib\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson, Version=1.6.0.4624, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+    <Reference Include="MongoDB.Bson, Version=1.7.0.4714, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\mongocsharpdriver.1.6\lib\net35\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\packages\mongocsharpdriver.1.7\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver, Version=1.6.0.4624, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+    <Reference Include="MongoDB.Driver, Version=1.7.0.4714, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\mongocsharpdriver.1.6\lib\net35\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\packages\mongocsharpdriver.1.7\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -134,7 +135,7 @@
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -155,14 +156,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Function\ExcelHelp.cs" />
+    <Compile Include="Function\FileHelp.cs" />
+    <Compile Include="Function\ImageHelp.cs" />
     <Compile Include="Infrastructure\AttachData.cs" />
     <Compile Include="Function\BarCodeToHTML.cs" />
     <Compile Include="Function\CNSpellTranslator.cs" />
     <Compile Include="Function\CreatePdf.cs" />
     <Compile Include="Infrastructure\DataTableConvert.cs" />
     <Compile Include="Infrastructure\DateExtend.cs" />
-    <Compile Include="Function\FileHelper.cs" />
     <Compile Include="Infrastructure\ExpendList.cs" />
+    <Compile Include="Service\ChannelFactoryManager.cs" />
+    <Compile Include="Service\ServiceProxy.cs" />
+    <Compile Include="UrlBuilder.cs" />
     <Compile Include="WebApi\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageSampleGenerator.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageSampleKey.cs" />
@@ -181,7 +187,6 @@
     <Compile Include="Infrastructure\DynamicMethodExecutor.cs" />
     <Compile Include="SingletonBase.cs" />
     <Compile Include="Winform\FastEval.cs" />
-    <Compile Include="Function\Image.cs" />
     <Compile Include="Function\RandomPassword.cs" />
     <Compile Include="Repositories\DomainInt.cs" />
     <Compile Include="Repositories\DomainGuid.cs" />
@@ -197,7 +202,7 @@
     <Compile Include="Repositories\RepoUtils.cs" />
     <Compile Include="Specifications\Other\ExpressionFuncExtender.cs" />
     <Compile Include="Function\T4Common.cs" />
-    <Compile Include="Simple\UnitTest.cs" />
+    <Compile Include="Test\UnitTest.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageApiModel.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageConfigurationExtensions.cs" />
     <Compile Include="Function\ZicLog4Net.cs" />
@@ -223,7 +228,6 @@
     <Compile Include="Repositories\DomainException.cs" />
     <Compile Include="Function\Encrypt.cs" />
     <Compile Include="Infrastructure\EnumHelp.cs" />
-    <Compile Include="Function\Excel.cs" />
     <Compile Include="Infrastructure\ExpendLinq.cs" />
     <Compile Include="Mvc\ExpendMvc.cs" />
     <Compile Include="Infrastructure\ExpendObj.cs" />
@@ -233,7 +237,6 @@
     <Compile Include="Infrastructure\JsonHelp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IocLocator.cs" />
-    <Compile Include="Mvc\UrlBuild.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
