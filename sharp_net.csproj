@@ -87,9 +87,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Mvc, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Mvc3Futures.3.0.20105.0\lib\Microsoft.Web.Mvc.dll</HintPath>
+    <Reference Include="Microsoft.Web.Mvc">
+      <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson, Version=1.7.0.4714, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -166,8 +165,7 @@
     <Compile Include="Infrastructure\DataTableConvert.cs" />
     <Compile Include="Infrastructure\DateExtend.cs" />
     <Compile Include="Infrastructure\ExpendList.cs" />
-    <Compile Include="Service\ChannelFactoryManager.cs" />
-    <Compile Include="Service\ServiceProxy.cs" />
+    <Compile Include="Infrastructure\IEmailService.cs" />
     <Compile Include="UrlBuilder.cs" />
     <Compile Include="WebApi\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageSampleGenerator.cs" />
@@ -180,10 +178,8 @@
     <Compile Include="WebApi\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Mvc\HttpContextLife.cs" />
     <Compile Include="WebApi\ScopeContainer.cs" />
-    <Compile Include="Repositories\DomainEvent.cs" />
     <Compile Include="Repositories\eAct.cs" />
     <Compile Include="Repositories\IAggregateRoot.cs" />
-    <Compile Include="Repositories\IDomainEvent.cs" />
     <Compile Include="Infrastructure\DynamicMethodExecutor.cs" />
     <Compile Include="SingletonBase.cs" />
     <Compile Include="Winform\FastEval.cs" />
@@ -192,40 +188,17 @@
     <Compile Include="Repositories\DomainGuid.cs" />
     <Compile Include="Repositories\MongoDB\DomainMongo.cs" />
     <Compile Include="Repositories\MongoDB\GuidIDGeneratorConvention.cs" />
-    <Compile Include="Repositories\MongoDB\IMongoDBRepositoryContext.cs" />
-    <Compile Include="Repositories\MongoDB\MongoDBRepository.cs" />
-    <Compile Include="Repositories\MongoDB\MongoDBRepositoryContext.cs" />
-    <Compile Include="Repositories\MongoDB\IMongoDBSettings.cs" />
-    <Compile Include="Repositories\MongoDB\MongoSortExpressionHelper.cs" />
     <Compile Include="Repositories\MongoDB\UseLocalDateTimeConvention.cs" />
     <Compile Include="Repositories\eDbType.cs" />
-    <Compile Include="Repositories\RepoUtils.cs" />
-    <Compile Include="Specifications\Other\ExpressionFuncExtender.cs" />
     <Compile Include="Function\T4Common.cs" />
     <Compile Include="Test\UnitTest.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageApiModel.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageConfigurationExtensions.cs" />
     <Compile Include="Function\ZicLog4Net.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\IRepositoryContext.cs" />
-    <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\SortOrder.cs" />
-    <Compile Include="Specifications\Composite\AndNotSpecification.cs" />
-    <Compile Include="Specifications\Composite\AndSpecification.cs" />
-    <Compile Include="Specifications\Single\AnySpecification.cs" />
-    <Compile Include="Specifications\CompositeSpecification.cs" />
-    <Compile Include="Specifications\ExpressionSpecification.cs" />
-    <Compile Include="Specifications\Other\ISpecificationParser.cs" />
-    <Compile Include="Specifications\Single\NoneSpecification.cs" />
-    <Compile Include="Specifications\Single\NotSpecification.cs" />
-    <Compile Include="Specifications\Composite\OrSpecification.cs" />
-    <Compile Include="Specifications\Other\ParameterRebinder.cs" />
-    <Compile Include="Specifications\Specification.cs" />
     <Compile Include="FaultData.cs" />
     <Compile Include="Mvc\FormsAuthenticationWithAuths.cs" />
     <Compile Include="Mvc\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />
-    <Compile Include="Repositories\DomainException.cs" />
     <Compile Include="Function\Encrypt.cs" />
     <Compile Include="Infrastructure\EnumHelp.cs" />
     <Compile Include="Infrastructure\ExpendLinq.cs" />
@@ -249,7 +222,6 @@
     <Content Include="WebApi\HelpPage\CodeAnalysisDictionary.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

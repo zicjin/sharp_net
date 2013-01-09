@@ -1,18 +1,23 @@
 ﻿using System;
 
 namespace sharp_net {
-
+    /// <summary>
+    ///这个类的功能：Dispose()方法只会执行被override的DisposeCustom方法中的用户自定义的内容，而不会触发析构函数。
+    ///析构函数在这里只会被垃圾回收器执行。另一个功能是保证DisposeCustom方法只被执行一次
+    ///理论：托管资源是不需要实现IDisposable接口去手动清理的，CRL本身就能够用非常成熟的方式去释放托管资源，不会造成内存浪费。
+    ///反而，在手动释放非托管资源时如果顺带清理了托管资源是一种性能浪费（C#-Dispose()默认既是如此处理）
+    /// </summary>
     public class Disposable : IDisposable {
 
+        //析构函数Finalize()是在对象真正被回收时调用，它无法被override
+        //Dispose()用于手动触发析构函数，且支持using语法。
+        //~Disposable用于垃圾回收器自动回收时触发（如果对象之前已被Dispose()回收过，则不会再被垃圾回收器处理）
         public void Dispose() {
             ClearUp(true);
             //使对象跳过Finalize()析构函数
             GC.SuppressFinalize(this);
         }
 
-        //析构函数为Finalize，但override Finalize()无法编译
-        //析构函数是在本对象真正被回收时调用，Dispose()只是能够触发析构函数，且支持using语法
-        //如果对象未被手动调用Dispose()，则垃圾回收器会在回收时调用这个方法
         ~Disposable() {
             ClearUp(false);
         }
@@ -33,5 +38,6 @@ namespace sharp_net {
         /// </summary>
         protected virtual void DisposeCustom() {
         }
+
     }
 }
