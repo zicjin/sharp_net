@@ -45,11 +45,6 @@ namespace sharp_net {
             return Path.AppendFormat("<script type='text/javascript' src='{0}'></script>", StaticUrl(file)).ToString();
         }
 
-        public static string ScriptDoc(string file, string initjs) {
-            StringBuilder Path = new StringBuilder();
-            return Path.AppendFormat("<script type='text/javascript' src='{0}' data-main='{1}'></script>", StaticUrl(file), initjs).ToString();
-        }
-
         public static string CssDoc(string file) {
             StringBuilder Path = new StringBuilder();
             return Path.AppendFormat("<link rel='stylesheet' type='text/css' href='{0}' />", StaticUrl(file)).ToString();
@@ -66,9 +61,6 @@ namespace sharp_net {
         }
         public static IHtmlString ScriptDoc(this HtmlHelper helper, string file) {
             return helper.Raw(ScriptDoc(file));
-        }
-        public static IHtmlString ScriptDoc(this HtmlHelper helper, string file, string initjs) {
-            return helper.Raw(ScriptDoc(file, initjs));
         }
         public static IHtmlString CssDoc(this HtmlHelper helper, string file) {
             return helper.Raw(CssDoc(file));
