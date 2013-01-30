@@ -16,17 +16,12 @@ namespace sharp_net {
         static UrlBuilder() {
             ControlDeploy = eControlDeploy.ByConfig;
             Stamp = "121127";
-            StaticDeploy = "/__build";
-            ImgDeploy = "/images";
+            StaticDeploy = "/assets_dist";
         }
 
         public static eControlDeploy ControlDeploy { get; set; }
-
         public static string Stamp { get; set; }
-
         public static string StaticDeploy { get; set; }
-
-        public static string ImgDeploy { get; set; }
 
         public static bool IsDeploy() {
             if (ControlDeploy == eControlDeploy.ByConfig)
@@ -35,9 +30,14 @@ namespace sharp_net {
                 return ControlDeploy == eControlDeploy.IsDeploy ? true : false;
         }
 
+        public static string StaticUrlNostamp(string file) {
+            StringBuilder Url = new StringBuilder();
+            return Url.AppendFormat("{0}{1}", IsDeploy() ? StaticDeploy : "/assets", file).ToString();
+        }
+
         public static string StaticUrl(string file) {
             StringBuilder Url = new StringBuilder();
-            return Url.AppendFormat("{0}{1}?{2}", (IsDeploy() ? StaticDeploy : String.Empty), file, Stamp).ToString();
+            return Url.AppendFormat("{0}{1}?v={2}", IsDeploy() ? StaticDeploy : "/assets", file, Stamp).ToString();
         }
 
         public static string ScriptDoc(string file) {
@@ -50,11 +50,6 @@ namespace sharp_net {
             return Path.AppendFormat("<link rel='stylesheet' type='text/css' href='{0}' />", StaticUrl(file)).ToString();
         }
 
-        public static string ImgUrl(string file) {
-            StringBuilder Url = new StringBuilder();
-            return Url.AppendFormat("{0}{1}?{2}", (IsDeploy() ? ImgDeploy : String.Empty), file, Stamp).ToString();
-        }
-
         #region Razor
         public static IHtmlString StaticUrl(this HtmlHelper helper, string file) {
             return helper.Raw(StaticUrl(file));
@@ -64,9 +59,6 @@ namespace sharp_net {
         }
         public static IHtmlString CssDoc(this HtmlHelper helper, string file) {
             return helper.Raw(CssDoc(file));
-        }
-        public static IHtmlString ImgUrl(this HtmlHelper helper, string file) {
-            return helper.Raw(ImgUrl(file));
         }
         #endregion
     }
