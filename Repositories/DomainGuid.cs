@@ -24,14 +24,6 @@ namespace sharp_net.Repositories {
             CreatTime = DateTime.Now;
             Act = eAct.Normal;
         }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
-        protected void Update(DomainGuidData data) {
-            if (data.ActEnum != 0)
-                this.ActEnum = data.ActEnum;
-            if (data.Timestamp != null)
-                this.Timestamp = data.Timestamp;
-        }
     }
 
     [SerializableAttribute()]
