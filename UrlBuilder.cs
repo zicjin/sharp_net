@@ -15,7 +15,7 @@ namespace sharp_net {
 
         static UrlBuilder() {
             ControlDeploy = eControlDeploy.ByConfig;
-            Stamp = "121127";
+            Stamp = "v=121127";
             StaticDeploy = "/assets_dist";
         }
 
@@ -37,7 +37,7 @@ namespace sharp_net {
 
         public static string StaticUrl(string file) {
             StringBuilder Url = new StringBuilder();
-            return Url.AppendFormat("{0}{1}?v={2}", IsDeploy() ? StaticDeploy : "/assets", file, Stamp).ToString();
+            return Url.AppendFormat("{0}{1}?{2}", IsDeploy() ? StaticDeploy : "/assets", file, Stamp).ToString();
         }
 
         public static string ScriptDoc(string file) {

@@ -155,6 +155,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\eUserCreatStatus.cs" />
     <Compile Include="Function\ExcelHelp.cs" />
     <Compile Include="Function\FileHelp.cs" />
     <Compile Include="Function\ImageHelp.cs" />
