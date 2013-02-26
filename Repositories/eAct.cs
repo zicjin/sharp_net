@@ -7,4 +7,10 @@
         unApproved = 4,
         Reported = 5
     }
+
+    public class ActHelp{
+        public static bool CouldShow(eAct act) {
+            return (act == eAct.Normal || act == eAct.Reported);
+        }
+    }
 }
