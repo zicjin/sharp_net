@@ -83,23 +83,30 @@ namespace sharp_net.Mvc {
             return MvcHtmlString.Create(builder.ToString(TagRenderMode.SelfClosing));
         }
 
-        public static IList<SelectListItem> ToSelectListItem<T>( this IEnumerable<T> items,
-            Func<T, string> getText, Func<T, string> getValue,
-            string selectValue, string defaultitem) {
+        public static IList<SelectListItem> ToSelectListItem<T>(this IEnumerable<T> items,
+            Func<T, string> getText, Func<T, string> getValue, string selectValue) {
             IList<SelectListItem> list = items.OrderBy(i => getText(i))
                 .Select(i => new SelectListItem {
                     Selected = (getValue(i) == selectValue),
                     Text = getText(i),
                     Value = getValue(i)
                 }).ToList();
-
-            if (!String.IsNullOrEmpty(defaultitem)) {
-                list.Insert(0, new SelectListItem {
-                    Text = defaultitem,
-                    Value = "0"
-                });
-            }
             return list;
+        }
+
+        public static SelectList ToSelectList<TEnum>(this TEnum enumObj) {
+            var values = from TEnum e in Enum.GetValues(typeof(TEnum))
+                         select new { Id = e, Name = e.ToString() };
+            return new SelectList(values, "Id", "Name", enumObj);
+        }
+
+        public static IEnumerable<SelectListItem> ToSelectListItems<TEnum>(this TEnum enumObj) {
+            return from TEnum e in Enum.GetValues(typeof(TEnum))
+                   select new SelectListItem() {
+                       Selected = (Convert.ToInt32(e) == Convert.ToInt32(enumObj)),
+                       Text = e.ToString(),
+                       Value = Convert.ToInt32(e).ToString()
+                   };
         }
 
         public static MvcHtmlString ActionLinkWcls<T>(this HtmlHelper helper, Expression<Action<T>> action, string linkText) where T : Controller {
