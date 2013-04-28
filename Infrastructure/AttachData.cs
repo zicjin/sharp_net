@@ -66,5 +66,13 @@ namespace sharp_net {
         public static T GetAttachedData<T>(this Enum value, object key) {
             return (T)value.GetAttachedData(key);
         }
+
+        public static object GetAttachedDataFromObj(this object value, object key) {
+            return value.GetType().GetField(value.ToString()).GetAttachedData(key);
+        }
+
+        public static T GetAttachedDataFromObj<T>(this object value, object key) {
+            return (T)value.GetAttachedDataFromObj(key);
+        }
     }
 }

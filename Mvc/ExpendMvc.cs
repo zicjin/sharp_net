@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using Microsoft.Web.Mvc;
+using System.Reflection;
 
 namespace sharp_net.Mvc {
 
@@ -105,6 +106,15 @@ namespace sharp_net.Mvc {
                    select new SelectListItem() {
                        Selected = (Convert.ToInt32(e) == Convert.ToInt32(enumObj)),
                        Text = e.ToString(),
+                       Value = Convert.ToInt32(e).ToString()
+                   };
+        }
+
+        public static IEnumerable<SelectListItem> ToSelectListItemsAttachData<TEnum>(this TEnum enumObj, object attachEnum) {
+            return from TEnum e in Enum.GetValues(typeof(TEnum))
+                   select new SelectListItem() {
+                       Selected = (Convert.ToInt32(e) == Convert.ToInt32(enumObj)),
+                       Text = e.GetAttachedDataFromObj<string>(attachEnum),
                        Value = Convert.ToInt32(e).ToString()
                    };
         }
