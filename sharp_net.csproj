@@ -189,9 +189,7 @@
     <Compile Include="Function\RandomPassword.cs" />
     <Compile Include="Repositories\DomainInt.cs" />
     <Compile Include="Repositories\DomainGuid.cs" />
-    <Compile Include="Repositories\MongoDB\DomainMongo.cs" />
-    <Compile Include="Repositories\MongoDB\GuidIDGeneratorConvention.cs" />
-    <Compile Include="Repositories\MongoDB\UseLocalDateTimeConvention.cs" />
+    <Compile Include="Repositories\DomainMongo.cs" />
     <Compile Include="Repositories\eDbType.cs" />
     <Compile Include="Function\T4Common.cs" />
     <Compile Include="Test\UnitTest.cs" />
