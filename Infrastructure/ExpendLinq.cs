@@ -22,7 +22,7 @@ namespace sharp_net {
             return (Expression<Func<T, bool>>)(f => false);
         }
 
-        //http://stackoverflow.com/questions/457316/combining-two-expressions-expressionfunct-bool
+        //http://stackoverflow.com/questions/457316/combining-two-expressions-expressionfunct-bool 只能给linq to sql 使用
         public static Expression<Func<T, bool>> OrElse<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2) {
             ParameterExpression param = expr1.Parameters[0];
             if (ReferenceEquals(param, expr2.Parameters[0])) {
