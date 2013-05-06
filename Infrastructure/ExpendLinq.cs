@@ -14,6 +14,18 @@ namespace sharp_net {
             }
         }
 
+        public static bool IsExist<T>(this IQueryable<T> queryable) {
+            return queryable.Count() > 0;
+        }
+
+        public static bool IsNotExist<T>(this IQueryable<T> queryable) {
+            return queryable.Count() <= 0;
+        }
+
+        public static bool IsExistAndSingle<T>(this IQueryable<T> queryable) where T : class {
+            return queryable.SingleOrDefault() != null;
+        }
+
         public static Expression<Func<T, bool>> True<T>() {
             return (Expression<Func<T, bool>>)(f => true);
         }
