@@ -208,7 +208,6 @@
     <Compile Include="Infrastructure\ExpendString.cs" />
     <Compile Include="Winform\ExpendWinform.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\JsonHelp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IocLocator.cs" />
   </ItemGroup>
