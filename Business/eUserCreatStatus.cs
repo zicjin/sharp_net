@@ -15,6 +15,7 @@ namespace sharp_net {
         DuplicateUserKey = 6,
         InvalidProviderUserKey = 7,
         UserRejected = 8, //未知错误，请求被驳回
-        WaitUnitwork = 9
+        WaitUnitwork = 9,
+        ProviderError = 10
     }
 }
