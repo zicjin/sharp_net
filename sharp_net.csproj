@@ -99,6 +99,7 @@
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="MongoDB.Bson, Version=1.8.1.20, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\mongocsharpdriver.1.8.1\lib\net35\MongoDB.Bson.dll</HintPath>
@@ -178,6 +179,7 @@
     <Compile Include="Infrastructure\ExpendList.cs" />
     <Compile Include="Infrastructure\IEmailService.cs" />
     <Compile Include="Infrastructure\ObjectId.cs" />
+    <Compile Include="Mvc\ExternalLoginResult.cs" />
     <Compile Include="UrlBuilder.cs" />
     <Compile Include="WebApi\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageSampleGenerator.cs" />
