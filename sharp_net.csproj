@@ -180,6 +180,7 @@
     <Compile Include="Infrastructure\IEmailService.cs" />
     <Compile Include="Infrastructure\ObjectId.cs" />
     <Compile Include="Mvc\ExternalLoginResult.cs" />
+    <Compile Include="Mvc\JsonNetResult.cs" />
     <Compile Include="UrlBuilder.cs" />
     <Compile Include="WebApi\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageSampleGenerator.cs" />
