@@ -16,12 +16,12 @@ namespace sharp_net {
         static UrlBuilder() {
             ControlDeploy = eControlDeploy.ByConfig;
             Stamp = "v=121127";
-            StaticDeploy = "/assets_dist";
+            AssetsDeploy = "/assets_dist";
         }
 
         public static eControlDeploy ControlDeploy { get; set; }
         public static string Stamp { get; set; }
-        public static string StaticDeploy { get; set; }
+        public static string AssetsDeploy { get; set; }
 
         public static bool IsDeploy() {
             if (ControlDeploy == eControlDeploy.ByConfig)
@@ -30,31 +30,20 @@ namespace sharp_net {
                 return ControlDeploy == eControlDeploy.IsDeploy ? true : false;
         }
 
-        public static string StaticUrlNostamp(string file) {
-            StringBuilder Url = new StringBuilder();
-            return Url.AppendFormat("{0}{1}", IsDeploy() ? StaticDeploy : "/assets", file).ToString();
+        public static string AssetsUrl() {
+            return IsDeploy() ? AssetsDeploy : "/assets";
         }
 
-        public static string StaticUrl(string file) {
-            StringBuilder Url = new StringBuilder();
-            return Url.AppendFormat("{0}{1}?{2}", IsDeploy() ? StaticDeploy : "/assets", file, Stamp).ToString();
-        }
-
+        #region Doc
         public static string ScriptDoc(string file) {
-            StringBuilder Path = new StringBuilder();
-            return Path.AppendFormat("<script type='text/javascript' src='{0}'></script>", StaticUrl(file)).ToString();
+            return new StringBuilder().AppendFormat("<script type='text/javascript' src='{0}{1}?{2}'></script>", IsDeploy() ? AssetsDeploy + "/src" : "/assets/src", file, Stamp).ToString();
         }
 
         public static string CssDoc(string file) {
-            StringBuilder Path = new StringBuilder();
-            return Path.AppendFormat("<link rel='stylesheet' type='text/css' href='{0}' />", StaticUrl(file)).ToString();
+            return new StringBuilder().AppendFormat("<link rel='stylesheet' type='text/css' href='{0}{1}?{2}' />", IsDeploy() ? AssetsDeploy + "/Content" : "/assets/Content", file, Stamp).ToString();
         }
 
-        #region Razor
-        public static IHtmlString StaticUrl(this HtmlHelper helper, string file) {
-            return helper.Raw(StaticUrl(file));
-        }
-        public static IHtmlString ScriptDoc(this HtmlHelper helper, string file) {
+        public static IHtmlString JsDoc(this HtmlHelper helper, string file) {
             return helper.Raw(ScriptDoc(file));
         }
         public static IHtmlString CssDoc(this HtmlHelper helper, string file) {
