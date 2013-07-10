@@ -12,10 +12,37 @@ using log4net.Core;
 using log4net.Filter;
 using log4net.Layout;
 using log4net.Repository;
+using System.Reflection;
 
 namespace sharp_net {
+    public enum LogType {
+        Fatal,
+        Error,
+        Warn,
+        Debug
+    }
 
     public sealed class ZicLog4Net {
+        public static void ProcessLog(MethodBase declaringType, string message, string domain, LogType logtype) {
+            ILog Log = LogManager.GetLogger(domain.ToString(), declaringType.DeclaringType + "|" + declaringType.Name);
+            switch (logtype) {
+                case LogType.Fatal:
+                    Log.Fatal(message);
+                    break;
+                case LogType.Error:
+                    Log.Error(message);
+                    break;
+                case LogType.Warn:
+                    Log.Warn(message);
+                    break;
+                case LogType.Debug:
+                    Log.Debug(message);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private static PatternLayout ZicLayout = new PatternLayout(Environment.NewLine + "时间：%date 线程ID：[%thread] 级别：%-5level 触发源：%logger property:[%property{NDC}] - " + Environment.NewLine + "Message：%message%newline");
         private static IDictionary<string, LevelRangeFilter> Filters = new Dictionary<string, LevelRangeFilter>();
         private static LevelRangeFilter EmailFilter = new LevelRangeFilter();

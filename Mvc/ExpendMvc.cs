@@ -104,7 +104,8 @@ namespace sharp_net.Mvc {
         public static IEnumerable<SelectListItem> ToSelectListItems<TEnum>(this TEnum enumObj) {
             return from TEnum e in Enum.GetValues(typeof(TEnum))
                    select new SelectListItem() {
-                       Selected = (Convert.ToInt32(e) == Convert.ToInt32(enumObj)),
+                       //Selected = (Convert.ToInt32(e) == Convert.ToInt32(enumObj)),
+                       //使用DropDownListFor的话是不需要指定Selected的
                        Text = e.ToString(),
                        Value = Convert.ToInt32(e).ToString()
                    };
@@ -149,6 +150,24 @@ namespace sharp_net.Mvc {
                 htmlAttrs["class"] += "ico[" + icoClass + "]";
             }
             return helper.ActionLink(linkText, null, null, routeValues, htmlAttrs);
+        }
+
+        public static MvcHtmlString ActionLinkWselected(this HtmlHelper helper, string linkText, string actionName, string controlName) {
+            if (helper.ViewContext.RouteData.Values["action"].ToString() == actionName &&
+                helper.ViewContext.RouteData.Values["controller"].ToString() == controlName)
+                return helper.ActionLink(linkText, actionName, controlName, new { Class = "selected" });
+            return helper.ActionLink(linkText, actionName, controlName);
+        }
+
+        public static string IsSelected(this HtmlHelper helper, string controlName, string actionName) {
+            var routeDatas = helper.ViewContext.RouteData.Values;
+            if(routeDatas["controller"].ToString() == controlName){
+                if(string.IsNullOrEmpty(actionName)) 
+                    return "selected";
+                else if(routeDatas["action"].ToString() == actionName)
+                    return "selected";
+            }
+            return "";
         }
     }
 }

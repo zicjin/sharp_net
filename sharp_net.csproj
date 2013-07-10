@@ -175,12 +175,13 @@
     <Compile Include="Function\CNSpellTranslator.cs" />
     <Compile Include="Function\CreatePdf.cs" />
     <Compile Include="Infrastructure\DataTableConvert.cs" />
-    <Compile Include="Infrastructure\DateExtend.cs" />
+    <Compile Include="Infrastructure\JsonHelp.cs" />
     <Compile Include="Infrastructure\ExpendList.cs" />
     <Compile Include="Infrastructure\IEmailService.cs" />
     <Compile Include="Infrastructure\ObjectId.cs" />
     <Compile Include="Infrastructure\PagerArgs.cs" />
     <Compile Include="Mvc\ExternalLoginResult.cs" />
+    <Compile Include="Mvc\HandleErrorForJsonAttribute.cs" />
     <Compile Include="Mvc\JsonNetResult.cs" />
     <Compile Include="UrlBuilder.cs" />
     <Compile Include="WebApi\HelpPage\ApiDescriptionExtensions.cs" />
