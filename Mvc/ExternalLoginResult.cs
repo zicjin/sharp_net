@@ -1,10 +1,10 @@
-﻿using Microsoft.Web.WebPages.OAuth;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.Web.WebPages.OAuth;
 
 namespace sharp_net.Mvc {
     public class ExternalLoginResult : ActionResult {
