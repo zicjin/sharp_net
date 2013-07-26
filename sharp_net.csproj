@@ -125,6 +125,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\mongocsharpdriver.1.8.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="NetDimension.Weibo">
+      <HintPath>Lib\NetDimension.Weibo.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -209,8 +212,14 @@
     <Compile Include="Infrastructure\JsonHelp.cs" />
     <Compile Include="Infrastructure\ExpendList.cs" />
     <Compile Include="Infrastructure\IEmailService.cs" />
+    <Compile Include="Infrastructure\OAuthFactory.cs" />
     <Compile Include="Infrastructure\ObjectId.cs" />
     <Compile Include="Infrastructure\PagerArgs.cs" />
+    <Compile Include="Mongo\CollectionName.cs" />
+    <Compile Include="Mongo\IMEntity.cs" />
+    <Compile Include="Mongo\MEntity.cs" />
+    <Compile Include="Mongo\MongoRepo.cs" />
+    <Compile Include="Mongo\MongoUtil.cs" />
     <Compile Include="Mvc\ExternalLoginResult.cs" />
     <Compile Include="Mvc\HandleErrorForJsonAttribute.cs" />
     <Compile Include="Mvc\JsonNetResult.cs" />

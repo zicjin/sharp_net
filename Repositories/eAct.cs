@@ -16,9 +16,9 @@ namespace sharp_net.Repositories {
             return (act == eAct.Normal || act == eAct.Reported);
         }
 
-        public static BsonArray CouldShowBson {
+        public static int[] CouldShowArray {
             get {
-                return new BsonArray(new List<int> { (int)eAct.Normal, (int)eAct.Reported });
+                return new [] { (int)eAct.Normal, (int)eAct.Reported };
             }
         }
 
