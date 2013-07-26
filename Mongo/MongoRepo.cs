@@ -10,7 +10,7 @@ using MongoDB.Driver.Builders;
 using MongoDB.Bson;
 
 namespace sharp_net.Mongo {
-    public class MongoRepo<T> where T : IMEntity {
+    public class MongoRepo<T> : IMongoRepo<T> where T : IMEntity {
         private MongoCollection<T> collection;
         public MongoCollection<T> Collection {
             get {

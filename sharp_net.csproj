@@ -217,6 +217,7 @@
     <Compile Include="Infrastructure\PagerArgs.cs" />
     <Compile Include="Mongo\CollectionName.cs" />
     <Compile Include="Mongo\IMEntity.cs" />
+    <Compile Include="Mongo\IMongoRepo.cs" />
     <Compile Include="Mongo\MEntity.cs" />
     <Compile Include="Mongo\MongoRepo.cs" />
     <Compile Include="Mongo\MongoUtil.cs" />
