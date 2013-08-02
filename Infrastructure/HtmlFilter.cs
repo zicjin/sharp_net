@@ -73,6 +73,7 @@ namespace sharp_net.Infrastructure {
         private static readonly Regex TAG_REGEX = new Regex("<[^>]*>", REGEX_OPTIONS);
         private static readonly Regex VALID_TAG_REGEX = new Regex(@"^(?<begin></?)(?<tag>[a-zA-z]+)\s*(?<attr>[^>]*?)(?<end>/?>)$", REGEX_OPTIONS);
         private static readonly Regex ATTRIBUTE_REGEX = new Regex(@"(?<name>[a-zA-Z]+)\s*=\s*""(?<value>[^""]*)""", REGEX_OPTIONS);
+        private static readonly Regex ATTRIBUTE_REGEX_BYJSON = new Regex(@"(?<name>[a-zA-Z]+)\s*=[\s\\]*""(?<value>[^""]*)""", REGEX_OPTIONS);
 
         public HtmlFilter() : this(null) { }
 
@@ -81,10 +82,16 @@ namespace sharp_net.Infrastructure {
         }
 
         public FilterXmlConfig Config { get; private set; }
+        public bool ByJson { get; set; }
 
-        public string Filter(string html) {
+        public string Filter(string html, bool isJson) {
+            ByJson = isJson;
             // 对每个HTML标记进行替换?
             return TAG_REGEX.Replace(html, GetTag);
+        }
+
+        public string Filter(string html) {
+            return Filter(html, false);
         }
 
         private string GetTag(Match match) {
@@ -106,7 +113,11 @@ namespace sharp_net.Infrastructure {
 
             // 过滤出合法的属性键值对
             var attrText = validTagMatch.Groups["attr"].Value;
-            var attrMatches = ATTRIBUTE_REGEX.Matches(attrText).Cast<Match>();
+            IEnumerable<Match> attrMatches;
+            if(ByJson)
+                attrMatches = ATTRIBUTE_REGEX_BYJSON.Matches(attrText).Cast<Match>();
+            else
+                attrMatches = ATTRIBUTE_REGEX.Matches(attrText).Cast<Match>();
             var validAttributes = attrMatches
                 .Select(m => GetAttribute(m, tagConfig))
                 .Where(s => !String.IsNullOrEmpty(s)).ToArray();
@@ -125,7 +136,7 @@ namespace sharp_net.Infrastructure {
             }
         }
 
-        private static string GetAttribute(Match attrMatch, TagXmlConfig tagConfig) {
+        private string GetAttribute(Match attrMatch, TagXmlConfig tagConfig) {
             var name = attrMatch.Groups["name"].Value;
 
             Regex regex;
@@ -133,7 +144,10 @@ namespace sharp_net.Infrastructure {
 
             var value = attrMatch.Groups["value"].Value;
             if (regex.IsMatch(value)) {
-                return String.Format("{0}=\"{1}\"", name, value);
+                if (ByJson)
+                    return String.Format("{0}=\\\"{1}\"", name, value);
+                else
+                    return String.Format("{0}=\"{1}\"", name, value);
             } else {
                 return "";
             }
