@@ -152,6 +152,16 @@ namespace sharp_net.Mvc {
             return helper.ActionLink(linkText, null, null, routeValues, htmlAttrs);
         }
 
+        public static MvcHtmlString ActionLinkWico(this HtmlHelper helper, string linkText, string actionName, string controlName, object routeValues, object htmlAttributes, string icoClass) {
+            RouteValueDictionary htmlAttrs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+            if (htmlAttrs["class"] == null) {
+                htmlAttrs.Add("class", "ico-" + icoClass);
+            } else {
+                htmlAttrs["class"] += " ico-" + icoClass;
+            }
+            return helper.ActionLink(linkText, actionName, controlName, routeValues, htmlAttrs);
+        }
+
         public static MvcHtmlString ActionLinkWselected(this HtmlHelper helper, string linkText, string actionName, string controlName) {
             if (helper.ViewContext.RouteData.Values["action"].ToString() == actionName &&
                 helper.ViewContext.RouteData.Values["controller"].ToString() == controlName)
