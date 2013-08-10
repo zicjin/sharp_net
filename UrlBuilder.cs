@@ -33,5 +33,9 @@ namespace sharp_net.Mvc {
         public static string AssetsUrl() {
             return IsDeploy() ? AssetsDeploy : "/assets";
         }
+
+        public static string InitUrl() {
+            return IsDeploy() ? AssetsDeploy + "/init.js" : "/assets/init";
+        }
     }
 }
