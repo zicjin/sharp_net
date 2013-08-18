@@ -20,9 +20,10 @@ namespace sharp_net.Infrastructure {
             IAuthenticationRequest request = openid.CreateRequest("https://www.google.com/accounts/o8/id", Realm.AutoDetect, callbackUrl);
             //Tell Google, what we want to have from the user:
             var fetch = new FetchRequest();
+            //https://developers.google.com/accounts/docs/OpenID no avator ...
             fetch.Attributes.AddRequired(WellKnownAttributes.Contact.Email);
-            fetch.Attributes.AddRequired(WellKnownAttributes.Name.FullName);
-            fetch.Attributes.AddRequired(WellKnownAttributes.Media.Images.Default);
+            fetch.Attributes.AddRequired(WellKnownAttributes.Name.First);
+            fetch.Attributes.AddRequired(WellKnownAttributes.Name.Last);
             request.AddExtension(fetch);
             openid.Dispose();
             return request;
