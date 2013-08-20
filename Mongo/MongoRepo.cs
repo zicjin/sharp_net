@@ -22,8 +22,8 @@ namespace sharp_net.Mongo {
             : this(MongoUtil.GetDefaultConnectionString()) {
         }
 
-        public MongoRepo(string connectionString) {
-            this.collection = MongoUtil.GetCollectionFromConnectionString<T>(connectionString);
+        public MongoRepo(string conStr) {
+            this.collection = MongoUtil.GetCollectionFromConnectionString<T>(conStr);
         }
 
         public void Delete(Expression<Func<T, bool>> criteria) {
