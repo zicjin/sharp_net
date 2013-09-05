@@ -227,6 +227,7 @@
     <Compile Include="Mvc\ExternalLoginResult.cs" />
     <Compile Include="Mvc\HandleErrorForJsonAttribute.cs" />
     <Compile Include="Mvc\JsonNetResult.cs" />
+    <Compile Include="Mvc\DropDownGropList.cs" />
     <Compile Include="UrlBuilder.cs" />
     <Compile Include="WebApi\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageSampleGenerator.cs" />
