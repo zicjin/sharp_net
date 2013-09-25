@@ -23,6 +23,12 @@ namespace sharp_net {
         Chinese,
         English
     }
+
+    public enum DescripEnum {
+        Chinese,
+        Description
+    }
+
     //AgeRange.GetAttachedData<string>(DescripByLang.English);
 
     //部署N个网站分别支持N个语言，web.config设定global_lang
@@ -47,10 +53,8 @@ namespace sharp_net {
     }
 
     public static class AttachDataExtensions {
-        public static object GetAttachedData(
-            this ICustomAttributeProvider provider, object key) {
-            var attributes = (AttachDataAttribute[])provider.GetCustomAttributes(
-                typeof(AttachDataAttribute), false);
+        public static object GetAttachedData(this ICustomAttributeProvider provider, object key) {
+            var attributes = (AttachDataAttribute[])provider.GetCustomAttributes(typeof(AttachDataAttribute), false);
             return attributes.First(a => a.Key.Equals(key)).Value;
         }
 

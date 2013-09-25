@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using sharp_net.Mvc;
 
 namespace sharp_net {
 
-    internal static class ExpendObj {
+    public static class ExpendObj {
 
         public static T ParseTo<T>(this object input) {
             object tmp = ChangeType(input, typeof(T));
@@ -23,5 +26,8 @@ namespace sharp_net {
             } catch { }
             return null;
         }
+
     }
+
+
 }
