@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace sharp_net.Infrastructure {
     public class DownloadImage {
-        public static void Execute(string uri, string fileName) {
+        public static void Execute(string uri, string filePath) {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -23,8 +23,13 @@ namespace sharp_net.Infrastructure {
                 response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase)) {
 
                 // if the remote file was found, download oit
+                string fileName = Path.GetFileName(filePath);
+                string path = filePath.Replace(fileName, "");
+                if (!Directory.Exists(path)) {
+                    Directory.CreateDirectory(path);
+                }
                 using (Stream inputStream = response.GetResponseStream())
-                using (Stream outputStream = File.OpenWrite(fileName)) {
+                using (Stream outputStream = File.OpenWrite(filePath)) {
                     byte[] buffer = new byte[4096];
                     int bytesRead;
                     do {
