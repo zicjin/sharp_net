@@ -47,7 +47,7 @@ namespace sharp_net.Mvc {
         }
 
         public static IEnumerable<GroupedSelectListItem> ToSelectGroupListItems<TEnum>(this Type enumObj, TEnum enumGroup, object attachEnum, List<string> selvals) {
-            return from TEnum e in Enum.GetValues(enumObj)
+            return from Object e in Enum.GetValues(enumObj)
                    select new GroupedSelectListItem() {
                        Text = e.GetAttachedDataFromObj<string>(attachEnum),
                        Value = e.ToString(),

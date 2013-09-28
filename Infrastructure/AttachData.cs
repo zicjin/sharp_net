@@ -24,11 +24,6 @@ namespace sharp_net {
         English
     }
 
-    public enum DescripEnum {
-        Chinese,
-        Description
-    }
-
     //AgeRange.GetAttachedData<string>(DescripByLang.English);
 
     //部署N个网站分别支持N个语言，web.config设定global_lang
