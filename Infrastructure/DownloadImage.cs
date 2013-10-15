@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace sharp_net.Infrastructure {
-    public class DownloadImage {
+    public static class DownloadImage {
         public static void Execute(string uri, string filePath) {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -17,10 +17,11 @@ namespace sharp_net.Infrastructure {
             // image file might be redirected to a 404-page, which would
             // yield the StatusCode "OK", even though the image was not
             // found.
-            if ((response.StatusCode == HttpStatusCode.OK ||
+            if (response.StatusCode == HttpStatusCode.OK ||
                 response.StatusCode == HttpStatusCode.Moved ||
-                response.StatusCode == HttpStatusCode.Redirect) &&
-                response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase)) {
+                response.StatusCode == HttpStatusCode.Redirect) {
+                // 抽屉的bug http://img1.chouti.com/group5/M03/74/6C/wKgCEVJXEiDoGigtAA7ki98-vN4272.jpg
+                // response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase)
 
                 // if the remote file was found, download oit
                 string fileName = Path.GetFileName(filePath);
