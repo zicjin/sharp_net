@@ -6,7 +6,7 @@ namespace sharp_net.Repositories {
         Normal = 1,
         Delete = 2,
         Freeze = 3,
-        unApproved = 4,
+        Unapproved = 4,
         Reported = 5
     }
 
