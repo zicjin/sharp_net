@@ -52,7 +52,7 @@ namespace sharp_net.Mvc {
                        Text = e.GetAttachedDataFromObj<string>(attachEnum),
                        Value = e.ToString(),
                        GroupKey = enumGroup.ToString(),
-                       GroupName = enumGroup.ToString(),
+                       GroupName = enumGroup.GetAttachedDataFromObj<string>(attachEnum),
                        Selected = selvals == null ? false : selvals.Contains(e.ToString())
                    };
         }
