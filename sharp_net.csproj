@@ -182,7 +182,6 @@
     <Compile Include="Function\CNSpellTranslator.cs" />
     <Compile Include="Function\CreatePdf.cs" />
     <Compile Include="Infrastructure\DataTableConvert.cs" />
-    <Compile Include="Infrastructure\DownloadImage.cs" />
     <Compile Include="Infrastructure\HtmlFilter.cs" />
     <Compile Include="Infrastructure\JsonHelp.cs" />
     <Compile Include="Infrastructure\ExpendList.cs" />
@@ -195,7 +194,6 @@
     <Compile Include="Mongo\MEntity.cs" />
     <Compile Include="Mongo\MongoRepo.cs" />
     <Compile Include="Mongo\MongoUtil.cs" />
-    <Compile Include="Mvc\HandleErrorForJsonAttribute.cs" />
     <Compile Include="Mvc\JsonNetResult.cs" />
     <Compile Include="Mvc\DropDownGropList.cs" />
     <Compile Include="Properties\AssemblyInfo.log4net.cs" />
@@ -226,7 +224,7 @@
     <Compile Include="WebApi\HelpPage\HelpPageApiModel.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageConfigurationExtensions.cs" />
     <Compile Include="Function\ZicLog4Net.cs" />
-    <Compile Include="FaultData.cs" />
+    <Compile Include="sdasda.cs" />
     <Compile Include="Mvc\FormsAuthenticationWithAuths.cs" />
     <Compile Include="Mvc\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />
