@@ -224,7 +224,7 @@
     <Compile Include="WebApi\HelpPage\HelpPageApiModel.cs" />
     <Compile Include="WebApi\HelpPage\HelpPageConfigurationExtensions.cs" />
     <Compile Include="Function\ZicLog4Net.cs" />
-    <Compile Include="sdasda.cs" />
+    <Compile Include="WebRequestRobot.cs" />
     <Compile Include="Mvc\FormsAuthenticationWithAuths.cs" />
     <Compile Include="Mvc\CompressResponseAttribute.cs" />
     <Compile Include="Disposable.cs" />

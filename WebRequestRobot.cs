@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -45,18 +47,29 @@ namespace sharp_net {
             }
         }
 
+        private void InjectWeiboCookie(HttpWebRequest request) {
+            request.CookieContainer = new CookieContainer();
+            string cookieRaw = ConfigurationManager.AppSettings["WeiboCookie"];
+            string[] cookiestrs = cookieRaw.Split(';');
+            foreach (string cookiestr in cookiestrs) {
+                string[] cookiekv = cookiestr.Trim().Split('=');
+                var cookie = new Cookie(cookiekv[0], cookiekv[1], "/", ".weibo.com");
+                request.CookieContainer.Add(cookie);
+            }
+        }
         public async Task<string> WeiboShortUrl(string url) {
             var wsuRequest = WebRequest.Create("http://weibo.com/aj/mblog/video?_wv=5&url=" + url) as HttpWebRequest;
-            if (wsuRequest == null) return string.Empty;// ignore file
+            if (wsuRequest == null)
+                return string.Empty;// ignore file
             wsuRequest.UserAgent = userAgent;
-            wsuRequest.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+            InjectWeiboCookie(wsuRequest);
             try {
                 using (var wsuResponse = await wsuRequest.GetResponseAsync() as HttpWebResponse) {
                     if (wsuResponse.StatusCode != HttpStatusCode.OK)
                         return string.Empty;
                     string responseData = new StreamReader(wsuResponse.GetResponseStream()).ReadToEnd();
                     var wsuObj = JsonConvert.DeserializeObject<WeiboShartUrlResponse>(responseData);
-                    return wsuObj.data;
+                    return wsuObj.data.url;
                 }
             } catch (Exception) {
                 return string.Empty;
@@ -65,13 +78,16 @@ namespace sharp_net {
 
         //http://www.cnblogs.com/e241138/archive/2012/12/16/2820054.html
         public async Task<string> AnalysisVideoUrl(string url) {
-            Task<string> weiboShortUrl = WeiboShortUrl(url);
-            if (string.IsNullOrEmpty(weiboShortUrl.Result))
+            string weiboShortUrl = await WeiboShortUrl(url);
+            if (string.IsNullOrEmpty(weiboShortUrl))
                 return string.Empty;
 
             string videoUrl = string.Format("http://api.weibo.com/widget/show.jsonp?vers=3&lang=zh-cn&short_url={0}&template_name=embed&source=2292547934", weiboShortUrl);
             var videoRequest = WebRequest.Create(videoUrl) as HttpWebRequest;
-            if (videoRequest == null) return string.Empty;// ignore file
+            if (videoRequest == null)
+                return string.Empty;// ignore file
+            videoRequest.UserAgent = userAgent;
+            InjectWeiboCookie(videoRequest);
 
             try {
                 using (var videoResponse = await videoRequest.GetResponseAsync() as HttpWebResponse) {
@@ -99,7 +115,11 @@ namespace sharp_net {
                 using (var response = await request.GetResponseAsync() as HttpWebResponse) {
                     if (new List<string>(response.Headers.AllKeys).Contains("Content-Type")) {
                         if (response.Headers["Content-Type"].StartsWith("text/html")) {
-                            string responseData = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                            string responseData;
+                            if(response.ContentType.Contains("GBK"))
+                                responseData = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding("gb2312")).ReadToEnd();
+                            else
+                                responseData = new StreamReader(response.GetResponseStream()).ReadToEnd();
                             Regex regex = new Regex(@"(?<=<title.*>)([\s\S]*)(?=</title>)", RegexOptions.IgnoreCase);
                             return regex.Match(responseData).Value.Trim();
                         }
@@ -114,7 +134,11 @@ namespace sharp_net {
         private class WeiboShartUrlResponse {
             public string code { get; set; }
             public string msg { get; set; }
-            public string data { get; set; }
+            public WeiboShartUrlData data { get; set; }
+        }
+
+        private class WeiboShartUrlData{
+            public string url { get; set; }
             public string title { get; set; }
         }
 
