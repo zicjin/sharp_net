@@ -68,6 +68,8 @@ namespace sharp_net {
                     if (wsuResponse.StatusCode != HttpStatusCode.OK)
                         return string.Empty;
                     string responseData = new StreamReader(wsuResponse.GetResponseStream()).ReadToEnd();
+                    if (responseData.StartsWith("<!DOCTYPE"))
+                        return "sorry，系统出现错误，请稍后再试。";
                     var wsuObj = JsonConvert.DeserializeObject<WeiboShartUrlResponse>(responseData);
                     return wsuObj.data.url;
                 }
@@ -81,6 +83,8 @@ namespace sharp_net {
             string weiboShortUrl = await WeiboShortUrl(url);
             if (string.IsNullOrEmpty(weiboShortUrl))
                 return string.Empty;
+            if (weiboShortUrl.StartsWith("sorry"))
+                return weiboShortUrl;
 
             string videoUrl = string.Format("http://api.weibo.com/widget/show.jsonp?vers=3&lang=zh-cn&short_url={0}&template_name=embed&source=2292547934", weiboShortUrl);
             var videoRequest = WebRequest.Create(videoUrl) as HttpWebRequest;
