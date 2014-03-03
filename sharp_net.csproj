@@ -103,6 +103,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -190,16 +193,8 @@
     <Compile Include="Mongo\MongoUtil.cs" />
     <Compile Include="Mvc\JsonNetResult.cs" />
     <Compile Include="Mvc\DropDownGropList.cs" />
+    <Compile Include="Mvc\NinjectDependencyScope.cs" />
     <Compile Include="UrlBuilder.cs" />
-    <Compile Include="WebApi\HelpPage\ApiDescriptionExtensions.cs" />
-    <Compile Include="WebApi\HelpPage\HelpPageSampleGenerator.cs" />
-    <Compile Include="WebApi\HelpPage\HelpPageSampleKey.cs" />
-    <Compile Include="WebApi\HelpPage\ImageSample.cs" />
-    <Compile Include="WebApi\HelpPage\InvalidSample.cs" />
-    <Compile Include="WebApi\HelpPage\ObjectGenerator.cs" />
-    <Compile Include="WebApi\HelpPage\SampleDirection.cs" />
-    <Compile Include="WebApi\HelpPage\TextSample.cs" />
-    <Compile Include="WebApi\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Mvc\HttpContextLife.cs" />
     <Compile Include="WebApi\ScopeContainer.cs" />
     <Compile Include="Repositories\eAct.cs" />
@@ -214,8 +209,6 @@
     <Compile Include="Repositories\eDbType.cs" />
     <Compile Include="Function\T4Common.cs" />
     <Compile Include="Test\UnitTest.cs" />
-    <Compile Include="WebApi\HelpPage\HelpPageApiModel.cs" />
-    <Compile Include="WebApi\HelpPage\HelpPageConfigurationExtensions.cs" />
     <Compile Include="Function\ZicLog4Net.cs" />
     <Compile Include="WebRequestRobot.cs" />
     <Compile Include="Mvc\FormsAuthenticationWithAuths.cs" />
@@ -238,9 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="WebApi\HelpPage\CodeAnalysisDictionary.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
