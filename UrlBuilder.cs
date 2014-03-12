@@ -16,7 +16,7 @@ namespace sharp_net.Mvc {
         static UrlBuild() {
             ControlDeploy = eControlDeploy.ByConfig;
             AssetsDeploy = "/assets_dist";
-            Version = "1.0.0";
+            Version = "1.0";
         }
 
         public static eControlDeploy ControlDeploy { get; set; }
