@@ -50,12 +50,13 @@ namespace sharp_net {
     public static class AttachDataExtensions {
         public static object GetAttachedData(this ICustomAttributeProvider provider, object key) {
             var attributes = (AttachDataAttribute[])provider.GetCustomAttributes(typeof(AttachDataAttribute), false);
-            return attributes.First(a => a.Key.Equals(key)).Value;
+            AttachDataAttribute result = attributes.FirstOrDefault(a => a.Key.Equals(key));
+            return result != null ? result.Value : null;
         }
 
-        public static T GetAttachedData<T>(
-            this ICustomAttributeProvider provider, object key) {
-            return (T)provider.GetAttachedData(key);
+        public static T GetAttachedData<T>(this ICustomAttributeProvider provider, object key) {
+            object result = provider.GetAttachedData(key);
+            return result != null ? (T)result : default(T);
         }
 
         public static object GetAttachedData(this Enum value, object key) {
@@ -63,7 +64,8 @@ namespace sharp_net {
         }
 
         public static T GetAttachedData<T>(this Enum value, object key) {
-            return (T)value.GetAttachedData(key);
+            object result = value.GetAttachedData(key);
+            return result != null ? (T)result : default(T);
         }
 
         public static object GetAttachedDataFromObj(this object value, object key) {
@@ -71,7 +73,8 @@ namespace sharp_net {
         }
 
         public static T GetAttachedDataFromObj<T>(this object value, object key) {
-            return (T)value.GetAttachedDataFromObj(key);
+            object result = value.GetAttachedDataFromObj(key);
+            return result != null ? (T)result : default(T);
         }
     }
 }
