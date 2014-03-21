@@ -54,7 +54,7 @@ namespace sharp_net {
 
         private ZicLog4Net() {
             EmailFilter.LevelMax = Level.Fatal;
-            EmailFilter.LevelMin = Level.Error;
+            EmailFilter.LevelMin = Level.Warn;
             EmailFilter.ActivateOptions();
 
             FatalFilter.LevelMax = log4net.Core.Level.Fatal;
