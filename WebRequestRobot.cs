@@ -47,6 +47,18 @@ namespace sharp_net {
             }
         }
 
+        public string Get302Location(string url) {
+            HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
+            req.AllowAutoRedirect = false;
+            HttpWebResponse response = req.GetResponse() as HttpWebResponse;
+            if (response.StatusCode == HttpStatusCode.Redirect ||
+                response.StatusCode == HttpStatusCode.MovedPermanently) {
+                // Do something...
+                return response.Headers["Location"];
+            }
+            return string.Empty;
+        }
+
         private void InjectWeiboCookie(HttpWebRequest request) {
             request.CookieContainer = new CookieContainer();
             string cookieRaw = ConfigurationManager.AppSettings["WeiboCookie"];
