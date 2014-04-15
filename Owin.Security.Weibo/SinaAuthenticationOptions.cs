@@ -1,9 +1,7 @@
-﻿namespace Owin.Security.Weibo
-{
+﻿namespace Owin.Security.Weibo {
     using Microsoft.Owin.Security;
 
-    public class SinaAuthenticationOptions : AuthenticationOptions
-    {
+    public class SinaAuthenticationOptions : AuthenticationOptions {
         public ISecureDataFormat<AuthenticationProperties> StateDataFormat { get; set; }
         public string AppID { get; set; }
 
@@ -17,14 +15,12 @@
 
         public ISinaAuthenticationProvider Provider { get; set; }
         public SinaAuthenticationOptions()
-            : this("Weibo")
-        {
-            
+            : this("Weibo") {
+
         }
 
         public SinaAuthenticationOptions(string authenticationType)
-            : base(authenticationType)
-        {
+            : base(authenticationType) {
             this.Description.Caption = "Weibo User";
             CallbackPath = "/signin-sinaweibo";
         }
