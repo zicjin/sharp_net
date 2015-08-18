@@ -13,15 +13,18 @@ namespace sharp_net.Mvc {
 
     public static class UrlBuild {
 
-        static UrlBuild() {
-            ControlDeploy = eControlDeploy.ByConfig;
-            AssetsDeploy = "/assets_dist";
-            Version = "1.0";
+        public static void Build(string domain, string version, eControlDeploy config) {
+            Version = version;
+            Domain = domain;
+            AssetsDeploy = String.Format("/assets/dist/{0}/{1}", Domain, Version);
+            ControlDeploy = config;
         }
 
-        public static eControlDeploy ControlDeploy { get; set; }
-        public static string AssetsDeploy { get; set; }
-        public static string Version { get; set; }
+        private static eControlDeploy ControlDeploy = eControlDeploy.ByConfig;
+        private static string AssetsDebug = "/assets/_site/dist";
+        private static string Version = "1.0.0";
+        private static string Domain = "zicjin-demo";
+        private static string AssetsDeploy;
 
         public static bool IsDeploy() {
             if (ControlDeploy == eControlDeploy.ByConfig)
@@ -31,11 +34,11 @@ namespace sharp_net.Mvc {
         }
 
         public static string AssetsUrl() {
-            return IsDeploy() ? AssetsDeploy : "/assets";
+            return IsDeploy() ? AssetsDeploy : AssetsDebug;
         }
 
-        public static string AssetsUrlOutExt(string name) {
-            return IsDeploy() ? String.Format("{0}/{1}.js", AssetsDeploy, name) : "/assets/" + name;
+        public static string AssetsUrl(string name) {
+            return IsDeploy() ? String.Format("{0}/{1}.js", AssetsDeploy, name) : String.Format("{0}/{1}.js", AssetsDebug, name);
         }
     }
 }
